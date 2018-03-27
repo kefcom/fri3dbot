@@ -32,8 +32,7 @@ public class _OverlayScript : MonoBehaviour {
         thisTextField.GetComponent<Text>().text = "test";
 
         //set position of text
-        lastPosition = 0f;
-        // 0 - -425
+        lastPosition = Camera.main.transform.position.x + 8.7f;
         Debug.Log(lastPosition);
         Vector3 newPosition = new Vector3(lastPosition, thisTextField.transform.position.y, thisTextField.transform.position.z);
         thisTextField.transform.position = newPosition;
@@ -59,20 +58,10 @@ public class _OverlayScript : MonoBehaviour {
         lastPosition = (lastPosition - 0.1f);
         Vector3 newPosition = new Vector3 (lastPosition, thisTextField.transform.position.y, thisTextField.transform.position.z);
         thisTextField.transform.position = newPosition;
-
-    }
-
-    public static float GetSizeOfText(Text text, string word)
-    {
-        float width = 0.0f;
-        CharacterInfo charInfo;
-        foreach (char c in word)
+        RectTransform textRectTransform = thisTextField.GetComponent<RectTransform>();
+        if(textRectTransform.offsetMax.x < -500f)
         {
-            text.font.GetCharacterInfo(c, out charInfo, text.fontSize);
-
-            width += charInfo.advance;
-
+            lastPosition = (Camera.main.transform.position.x + 8.7f);
         }
-        return width;
     }
 }
