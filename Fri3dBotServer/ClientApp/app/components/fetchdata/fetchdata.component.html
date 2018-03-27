@@ -1,0 +1,18 @@
+<h1>Random scene</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!scenes"><em>Loading...</em></p>
+
+<table class='table' *ngIf="scenes">
+    <thead>
+        <tr>
+            <th>Scene</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let scene of scenes">
+            <td>{{ scene }}</td>
+        </tr>
+    </tbody>
+</table>
