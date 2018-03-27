@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 370747896}
   - component: {fileID: 370747895}
   m_Layer: 0
-  m_Name: OverlayObject
+  m_Name: erlayScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasPrefab: {fileID: 1735667047292272, guid: 6c6eaeddb30e47248a5df063406f6110,
     type: 2}
+  lastPosition: 0
 --- !u!4 &370747896
 Transform:
   m_ObjectHideFlags: 0
@@ -394,7 +395,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 964453079}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eefd84470f3b4e64da6eaaf98b86229f, type: 3}
   m_Name: 
@@ -448,7 +449,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1045502179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf44c9701dc5ca34caff0f36972b8e3d, type: 3}
   m_Name: 
