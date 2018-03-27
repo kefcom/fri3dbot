@@ -2,7 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+
 /fri3dbot/Temp
 /fri3dbot/.vs/config
 /fri3dbot/.vs/fri3dbot/v15/Server/sqlite3/storage.ide-shm
 /fri3dbot/.vs/fri3dbot/v15/Server/sqlite3/storage.ide-wal
+/fri3dbot/Library/metadata/
