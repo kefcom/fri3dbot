@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime;
 
 public class _webPoller : MonoBehaviour {
 
@@ -16,7 +20,11 @@ public class _webPoller : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        Debug.Log("webpoller active");
+    async void Update ()
+	{
+	    var client = new HttpClient();
+	    client.BaseAddress = new Uri("http://localhost:59576");
+	    var result = await client.GetAsync("api/scene/random");
+	    Debug.Log("webpoller active");
 	}
 }

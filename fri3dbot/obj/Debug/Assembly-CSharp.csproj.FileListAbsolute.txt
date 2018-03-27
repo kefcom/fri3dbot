@@ -37,3 +37,46 @@ C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\Temp\bin\Debug\UnityEngine.SpatialTrac
 C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\obj\Debug\Assembly-CSharp.dll
 C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.SpatialTracking.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.UIAutomation.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\System.IO.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\System.Net.Http.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.Cecil.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.Cecil.Pdb.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\Unity.Cecil.Mdb.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\nunit.framework.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.UIAutomation.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.csproj.CopyComplete
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.dll
+C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.pdb
