@@ -8,3 +8,5 @@
 /fri3dbot/.vs/fri3dbot/v15/Server/sqlite3/storage.ide-shm
 /fri3dbot/.vs/fri3dbot/v15/Server/sqlite3/storage.ide-wal
 /fri3dbot/Library/metadata/
+*.meta
+/fri3dbot/.vs
