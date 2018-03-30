@@ -30,7 +30,7 @@ public class _OverlayScript : MonoBehaviour
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }
         spawnOverlay();
-        generateSecurityCode();
+        Invoke("generateSecurityCode", 1f);
     }
 
     void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
@@ -65,6 +65,10 @@ public class _OverlayScript : MonoBehaviour
         thisTextField = GameObject.Find("bottomText").gameObject;
         thisTextField.GetComponent<Text>().text = overlayText;
 
+        //security code
+        thisCodeField = GameObject.Find("topText").gameObject;
+        thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString();
+
         //update scene var
         thisScene = SceneManager.GetActiveScene().name;
 
@@ -73,7 +77,6 @@ public class _OverlayScript : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Substring(0,6) == "bend-r")
         {
             thisTextField.GetComponent<Text>().color = Color.black;
-            thisCodeField = GameObject.Find("topText").gameObject;
             thisCodeField.GetComponent<Text>().color = Color.black;
         }
     }
