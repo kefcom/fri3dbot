@@ -27,20 +27,28 @@ public class _OverlayScript : MonoBehaviour
             // don't destroy this object
             thisScene = SceneManager.GetActiveScene().name;
             DontDestroyOnLoad(this);
-
+            SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }
         spawnOverlay();
         generateSecurityCode();
     }
 
+    void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
+    {
+        //unless it's a transition scene, apply overlay
+        if (SceneManager.GetActiveScene().name.Substring(0, 6) != "_trans")
+        {
+            spawnOverlay();
+        }
+    }
+
+
+
+
 
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != thisScene)
-        {
-            spawnOverlay();
-        }
 
     }
     
@@ -48,12 +56,16 @@ public class _OverlayScript : MonoBehaviour
     {
         //instantiate overlay object
         thisCanvas = Instantiate(canvasPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        //set canvas rendermode to camera
         thisCanvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+        //assign main camera to canvas
         thisCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
 
         //OverlayText
         thisTextField = GameObject.Find("bottomText").gameObject;
         thisTextField.GetComponent<Text>().text = overlayText;
+
+        //update scene var
         thisScene = SceneManager.GetActiveScene().name;
 
         //override colors for some faces
@@ -61,24 +73,28 @@ public class _OverlayScript : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Substring(0,6) == "bend-r")
         {
             thisTextField.GetComponent<Text>().color = Color.black;
+            thisCodeField = GameObject.Find("topText").gameObject;
             thisCodeField.GetComponent<Text>().color = Color.black;
         }
     }
 
     public void generateSecurityCode()
     {
+        //move current code to lastcode
         lastSecurityCode = currentSecurityCode;
+        //generate new code
         currentSecurityCode = Random.Range(100, 999);
         //updateOverlay
         thisCodeField = GameObject.Find("topText").gameObject;
         thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString() ;
+        //run this function again in <x> time
         Invoke("generateSecurityCode", securityCodeTime);
     }
 
     public void setOverlayText(string text)
     {
         overlayText = text;
-        //OverlayText
+        //update OverlayText
         thisTextField = GameObject.Find("bottomText").gameObject;
         thisTextField.GetComponent<Text>().text = overlayText;
     }

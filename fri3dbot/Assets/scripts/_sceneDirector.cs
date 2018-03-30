@@ -59,6 +59,8 @@ public class _sceneDirector : MonoBehaviour {
         SceneManager.LoadScene(nextSceneName);
         // load another random scene
         float newSceneTime = Random.Range(120f, 600f); //random between 2 and 10 minutes       
+
+        //load new scene in <x> time
         Invoke("loadRandomScene", newSceneTime);
     }
 

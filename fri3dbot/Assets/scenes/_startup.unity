@@ -195,7 +195,7 @@ RectTransform:
   m_GameObject: {fileID: 267919224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.027027028, y: 0.027027028, z: 0.027027028}
+  m_LocalScale: {x: 0.02653928, y: 0.02653928, z: 0.02653928}
   m_Children:
   - {fileID: 1519863970}
   m_Father: {fileID: 0}
@@ -238,8 +238,8 @@ MonoBehaviour:
   lastPosition: 0
   currentSecurityCode: 123
   lastSecurityCode: 321
-  securityCodeTime: 15
-  overlayText: testing 123 testing
+  securityCodeTime: 60
+  overlayText: 
 --- !u!4 &370747896
 Transform:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: loading.
+  m_Text: loading fri3dbot
 --- !u!222 &1519863972
 CanvasRenderer:
   m_ObjectHideFlags: 0
