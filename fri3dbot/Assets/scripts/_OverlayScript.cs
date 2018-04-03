@@ -27,10 +27,17 @@ public class _OverlayScript : MonoBehaviour
             // don't destroy this object
             thisScene = SceneManager.GetActiveScene().name;
             DontDestroyOnLoad(this);
+            //create hook for scenechange
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+            //set overlay text for startup
+            overlayText = "Loading fri3dbot";
         }
+        //spawn overlay
         spawnOverlay();
-        Invoke("generateSecurityCode", 1f);
+        //reset overlay text
+        overlayText = "";
+        //trigger security code
+        Invoke("generateSecurityCode", 0.1f);
     }
 
     void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
