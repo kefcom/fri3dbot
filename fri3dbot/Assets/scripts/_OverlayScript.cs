@@ -32,10 +32,10 @@ public class _OverlayScript : MonoBehaviour
             //set overlay text for startup
             overlayText = "Loading fri3dbot";
         }
+        //set scene name as overlay text
+        overlayText = SceneManager.GetActiveScene().name.ToString();
         //spawn overlay
         spawnOverlay();
-        //reset overlay text
-        overlayText = "";
         //trigger security code
         Invoke("generateSecurityCode", 0.1f);
     }
@@ -45,6 +45,8 @@ public class _OverlayScript : MonoBehaviour
         //unless it's a transition scene, apply overlay
         if (SceneManager.GetActiveScene().name.Substring(0, 6) != "_trans")
         {
+            //set scene name as overlay text
+            overlayText = SceneManager.GetActiveScene().name.ToString();
             spawnOverlay();
         }
     }
