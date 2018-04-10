@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class _sceneDirector : MonoBehaviour {
@@ -20,8 +21,9 @@ public class _sceneDirector : MonoBehaviour {
 
     void showTransition()
     {
-        int transitionNumber = Random.Range(0, 5);
-        switch(transitionNumber)
+        int transitionNumber = UnityEngine.Random.Range(0, 5);
+        float waitingTime = UnityEngine.Random.Range(2f, 5f);
+        switch (transitionNumber)
         {
             case 0:
                 SceneManager.LoadScene("_transition_static");
@@ -37,6 +39,7 @@ public class _sceneDirector : MonoBehaviour {
                 break;
             case 4:
                 SceneManager.LoadScene("_transition_blocks");
+                waitingTime = 8f;
                 break;
 
 
@@ -44,21 +47,48 @@ public class _sceneDirector : MonoBehaviour {
                 SceneManager.LoadScene("_transition_static");
                 break;
         }
-        float waitingTime = Random.Range(2f, 5f);
+        
         Invoke("loadScene",waitingTime);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		//listen for keys to change face
+        if(Input.GetKeyUp(KeyCode.F1) == true)
+        {
+            nextSceneName = "ledFace_Off";
+            showTransition();
+        }
+        if(Input.GetKeyUp(KeyCode.F2) == true)
+        {
+            nextSceneName = "bend-r-init";
+            showTransition();
+        }
+        if (Input.GetKeyUp(KeyCode.F3) == true)
+        {
+            nextSceneName = "eeve-init";
+            showTransition();
+        }
+        if (Input.GetKeyUp(KeyCode.F4) == true)
+        {
+            nextSceneName = "gearHead_init";
+            showTransition();
+        }
+        if(Input.GetKeyUp(KeyCode.F5) == true)
+        {
+            nextSceneName = "roboFace-init";
+            showTransition();
+        }
+    }
 
 
     public void loadScene()
     {
         SceneManager.LoadScene(nextSceneName);
         // load another random scene
-        float newSceneTime = Random.Range(120f, 600f); //random between 2 and 10 minutes       
+        float newSceneTime = UnityEngine.Random.Range(120f, 600f); //random between 2 and 10 minutes       
+        TimeSpan newTime = new TimeSpan(System.DateTime.Now.TimeOfDay.Hours,System.DateTime.Now.TimeOfDay.Minutes,System.DateTime.Now.TimeOfDay.Seconds + Mathf.RoundToInt(newSceneTime));
+        Debug.Log("New scene in " + newSceneTime.ToString() + " Seconds (= " + newTime.ToString()  + " )");
 
         //load new scene in <x> time
         Invoke("loadRandomScene", newSceneTime);
@@ -67,7 +97,7 @@ public class _sceneDirector : MonoBehaviour {
 
     public void loadRandomScene()
     {
-        int randomScene = Random.Range(0, 4);
+        int randomScene = UnityEngine.Random.Range(0, 4);
         switch(randomScene)
         {
             case 0:
@@ -85,6 +115,10 @@ public class _sceneDirector : MonoBehaviour {
             case 3:
                 //gearhead
                 nextSceneName = "gearHead_init";
+                break;
+            case 4:
+                //roboface
+                nextSceneName = "roboFace-init";
                 break;
 
             default:

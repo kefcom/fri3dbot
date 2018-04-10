@@ -4,6 +4,7 @@ using System;
 
 
 public class eeveScript : MonoBehaviour {
+    private int moodID;
 
     void Start()
     {
@@ -12,6 +13,10 @@ public class eeveScript : MonoBehaviour {
             // don't destroy this object
             DontDestroyOnLoad(this);
             Invoke("determineMood", 5f);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
     }
@@ -22,15 +27,47 @@ public class eeveScript : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+
+        //listen for keys to change mood
+        if (Input.GetKeyUp(KeyCode.LeftArrow) == true)
+        {
+            CancelInvoke();
+            if (moodID > 0)
+            {
+                moodID--;
+            }
+            else
+            {
+                moodID = 6; // change to max emotions
+            }
+            changeMood();
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow) == true)
+        {
+            CancelInvoke();
+            if (moodID < 6) // change to max emotions
+            {
+                moodID++;
+            }
+            else
+            {
+                moodID = 0;
+            }
+            changeMood();
+        }
     }
 
 
     void determineMood()
     {
-        int moodTime = UnityEngine.Random.Range(5, 60); // time between moods (applied below, so certain animations can override ifneedbe)
-        int moodID = UnityEngine.Random.Range(0, 7); // choose next mood between x (inclusive) and x (exclusive)
-        //int moodID = 12; //remove, only for testing
 
+        int moodID = UnityEngine.Random.Range(0, 7); // choose next mood between x (inclusive) and x (exclusive)
+        changeMood();
+    }
+
+    void changeMood()
+    {
+        int moodTime = UnityEngine.Random.Range(5, 60); // time between moods (applied below, so certain animations can override ifneedbe)
         switch (moodID)
         {
             case 0:

@@ -4,16 +4,20 @@ using System;
 
 
 public class bendrScript : MonoBehaviour {
+    private int moodID;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         if (SceneManager.GetActiveScene().name.Substring(0,11) == "bend-r-init")
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
             Invoke("determineMood", 5f);
         }
-
+        else
+        {
+            Destroy(this.gameObject); 
+        }
     }
 
 
@@ -23,12 +27,45 @@ public class bendrScript : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+
+        //listen for keys to change mood
+        if (Input.GetKeyUp(KeyCode.LeftArrow) == true)
+        {
+            CancelInvoke();
+            if (moodID > 0)
+            {
+                moodID--;
+            }
+            else
+            {
+                moodID = 8; // change to max emotions
+            }
+            changeMood();
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow) == true)
+        {
+            CancelInvoke();
+            if (moodID < 8) // change to max emotions
+            {
+                moodID++;
+            }
+            else
+            {
+                moodID = 0;
+            }
+            changeMood();
+        }
     }
 
     void determineMood()
+    {      
+        moodID = UnityEngine.Random.Range(0, 9); // choose next mood between 0(inclusive) and 9 exclusive)
+        changeMood();
+    }
+
+    void changeMood()
     {
         int moodTime = UnityEngine.Random.Range(20, 120); // time between moods (applied below, so certain animations can override ifneedbe)
-        int moodID = UnityEngine.Random.Range(0, 9); // choose next mood between 0(inclusive) and 9 exclusive)
         switch (moodID)
         {
             case 0:
@@ -76,5 +113,6 @@ public class bendrScript : MonoBehaviour {
 
         //apply mood time
         Invoke("determineMood", moodTime);
+
     }
 }

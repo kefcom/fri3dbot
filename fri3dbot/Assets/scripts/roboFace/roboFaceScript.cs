@@ -4,6 +4,8 @@ using System;
 
 public class roboFaceScript : MonoBehaviour
 {
+    private int moodID;
+
 
     // Use this for initialization
     void Start()
@@ -13,6 +15,10 @@ public class roboFaceScript : MonoBehaviour
             // don't destroy this object
             DontDestroyOnLoad(this);
             Invoke("determineMood", 1f);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
 
@@ -25,14 +31,45 @@ public class roboFaceScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        //listen for keys to change mood
+        if (Input.GetKeyUp(KeyCode.LeftArrow) == true)
+        {
+            CancelInvoke();
+            if (moodID > 0)
+            {
+                moodID--;
+            }
+            else
+            {
+                moodID = 1; // change to max emotions
+            }
+            changeMood();
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow) == true)
+        {
+            CancelInvoke();
+            if (moodID < 1) // change to max emotions
+            {
+                moodID++;
+            }
+            else
+            {
+                moodID = 0;
+            }
+            changeMood();
+        }
     }
 
     void determineMood()
+    {      
+        int moodID = UnityEngine.Random.Range(0, 2); // choose next mood between 0(inclusive) and 13(exclusive)
+        changeMood();
+    }
+
+    void changeMood()
     {
         int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
-        int moodID = UnityEngine.Random.Range(0, 2); // choose next mood between 0(inclusive) and 13(exclusive)
-        //int moodID = 12; //remove, only for testing
-
         switch (moodID)
         {
             case 0:
