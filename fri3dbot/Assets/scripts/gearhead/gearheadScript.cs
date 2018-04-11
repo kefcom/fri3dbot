@@ -4,6 +4,8 @@ using System;
 
 public class gearheadScript : MonoBehaviour {
     private int moodID;
+    private int newMoodID;
+
 
     // Use this for initialization
     void Start () {
@@ -11,6 +13,8 @@ public class gearheadScript : MonoBehaviour {
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
+            moodID = 0;
+            newMoodID = 0;
             Invoke("determineMood", 1f);
         }
         else
@@ -39,6 +43,7 @@ public class gearheadScript : MonoBehaviour {
             {
                 moodID = 4; // change to max emotions
             }
+            newMoodID = moodID;
             changeMood();
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
@@ -52,49 +57,78 @@ public class gearheadScript : MonoBehaviour {
             {
                 moodID = 0;
             }
+            newMoodID = moodID;
             changeMood();
         }
     }
 
     void determineMood()
     {      
-        int moodID = UnityEngine.Random.Range(0, 5); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, 5); // choose next mood between x (inclusive) and x (exclusive)
         changeMood();
     }
 
     void changeMood()
     {
-        int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
-        switch (moodID)
+        if (newMoodID != moodID)
         {
-            case 0:
-                //idle
-                SceneManager.LoadScene("gearHead_idle");
-                break;
-            case 1:
-                //idle2
-                SceneManager.LoadScene("gearHead_idle2");
-                break;
-            case 2:
-                //happy (more like derpy)
-                SceneManager.LoadScene("gearHead_happy");
-                break;
-            case 3:
-                //stuck
-                SceneManager.LoadScene("gearHead_gearStuck");
-                break;
-            case 4:
-                //fri3d
-                SceneManager.LoadScene("gearHead_fri3d");
-                break;
+            // scene is not ready for change yet... (animation not done yet)
+            if (moodID == 0)
+            {
+                moodID = newMoodID;
+                changeMood();
+            }
 
-            default:
-                // idle
-                SceneManager.LoadScene("gearHead_idle");
-                break;
         }
+        else
+        {
+            int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
+            switch (moodID)
+            {
+                case 0:
+                    //idle
+                    SceneManager.LoadScene("gearHead_idle");
+                    break;
+                case 1:
+                    //idle2
+                    SceneManager.LoadScene("gearHead_idle2");
+                    break;
+                case 2:
+                    //happy (more like derpy)
+                    SceneManager.LoadScene("gearHead_happy");
+                    break;
+                case 3:
+                    //stuck
+                    SceneManager.LoadScene("gearHead_gearStuck");
+                    break;
+                case 4:
+                    //fri3d
+                    SceneManager.LoadScene("gearHead_fri3d");
+                    break;
 
-        //apply mood time
-        Invoke("determineMood", moodTime);
+                default:
+                    // idle
+                    SceneManager.LoadScene("gearHead_idle");
+                    break;
+            }
+
+            //apply mood time
+            Invoke("determineMood", moodTime);
+        }
+    }
+
+    public void triggerBusy()
+    {
+
+    }
+
+    public void triggerReady()
+    {
+        //only change if needed
+        if (moodID != newMoodID)
+        {
+            moodID = newMoodID;
+            changeMood();
+        }
     }
 }

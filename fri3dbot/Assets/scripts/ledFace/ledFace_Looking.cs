@@ -18,6 +18,7 @@ public class ledFace_Looking : MonoBehaviour {
 
     void changeScene()
     {
+        GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
         int randomScene = Random.Range(0, 4);
         switch (randomScene)
         {

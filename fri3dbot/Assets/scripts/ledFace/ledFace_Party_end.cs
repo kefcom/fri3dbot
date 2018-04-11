@@ -17,6 +17,7 @@ public class ledFace_Party_end : MonoBehaviour {
 
     void nextScene()
     {
+        GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
         SceneManager.LoadScene("ledFace_Party03");
     }
 

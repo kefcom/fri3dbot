@@ -18,6 +18,7 @@ public class ledFace_Laughing : MonoBehaviour {
 
     void changeScene()
     {
+        GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
         //switch (SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length - 2,2))
         int randomScene = Random.Range(0, 3);
         switch (randomScene)

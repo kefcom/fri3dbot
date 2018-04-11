@@ -5,6 +5,8 @@ using System;
 
 public class bendrScript : MonoBehaviour {
     private int moodID;
+    private int newMoodID;
+
 
     // Use this for initialization
     void Start () {
@@ -12,7 +14,9 @@ public class bendrScript : MonoBehaviour {
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
-            Invoke("determineMood", 5f);
+            moodID = 0;
+            newMoodID = 0;
+            Invoke("determineMood", 1f);
         }
         else
         {
@@ -40,6 +44,7 @@ public class bendrScript : MonoBehaviour {
             {
                 moodID = 8; // change to max emotions
             }
+            newMoodID = moodID;
             changeMood();
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
@@ -53,66 +58,94 @@ public class bendrScript : MonoBehaviour {
             {
                 moodID = 0;
             }
+            newMoodID = moodID;
             changeMood();
         }
     }
 
     void determineMood()
     {      
-        moodID = UnityEngine.Random.Range(0, 9); // choose next mood between 0(inclusive) and 9 exclusive)
+        newMoodID = UnityEngine.Random.Range(0, 9); // choose next mood between 0(inclusive) and 9 exclusive)
+        Debug.Log("new mood will be: " + newMoodID.ToString());
         changeMood();
     }
 
     void changeMood()
     {
-        int moodTime = UnityEngine.Random.Range(20, 120); // time between moods (applied below, so certain animations can override ifneedbe)
-        switch (moodID)
+        if(newMoodID != moodID)
         {
-            case 0:
-                //happy (animation)
-                SceneManager.LoadScene("bend-rHappy");
-                break;
-            case 1:
-                //angry (animation)
-                SceneManager.LoadScene("bend-rAngry00");
-                break;
-            case 2:
-                //Error (animation)
-                SceneManager.LoadScene("bend-rError00");
-                break;
-            case 3:
-                //Error2 (animation)
-                SceneManager.LoadScene("bend-rError200");
-                break;
-            case 4:
-                //drunk (animation)
-                moodTime = 25;
-                SceneManager.LoadScene("bend-rDrunk");
-                break;
-            case 5:
-                //coding (animation)
-                SceneManager.LoadScene("bend-rCoding00");
-                break;
-            case 6:
-                //fri3d (animation)
-                SceneManager.LoadScene("bend-rFried");
-                break;
-            case 7:
-                //smoking (animation)
-                SceneManager.LoadScene("bend-rSmoking");
-                break;
-            case 8:
-                //looking (animation)
-                SceneManager.LoadScene("bend-rLooking");
-                break;
-            default:
-                // Happy
-                SceneManager.LoadScene("bend-rHappy");
-                break;
+            // scene is not ready for change yet... (animation not done yet)
+            if(moodID == 5)
+            {
+                moodID = newMoodID;
+                changeMood();
+            }
         }
+        else
+        {
+            // change the scene
+            int moodTime = UnityEngine.Random.Range(20, 120); // time between moods (applied below, so certain animations can override ifneedbe)
+            switch (moodID)
+            {
+                case 0:
+                    //happy (animation)
+                    SceneManager.LoadScene("bend-rHappy");
+                    break;
+                case 1:
+                    //angry (animation)
+                    SceneManager.LoadScene("bend-rAngry00");
+                    break;
+                case 2:
+                    //Error (animation)
+                    SceneManager.LoadScene("bend-rError00");
+                    break;
+                case 3:
+                    //Error2 (animation)
+                    SceneManager.LoadScene("bend-rError200");
+                    break;
+                case 4:
+                    //drunk (animation)
+                    moodTime = 25;
+                    SceneManager.LoadScene("bend-rDrunk");
+                    break;
+                case 5:
+                    //coding (animation)
+                    SceneManager.LoadScene("bend-rCoding00");
+                    break;
+                case 6:
+                    //fri3d (animation)
+                    SceneManager.LoadScene("bend-rFried");
+                    break;
+                case 7:
+                    //smoking (animation)
+                    SceneManager.LoadScene("bend-rSmoking");
+                    break;
+                case 8:
+                    //looking (animation)
+                    SceneManager.LoadScene("bend-rLooking");
+                    break;
+                default:
+                    // Happy
+                    SceneManager.LoadScene("bend-rHappy");
+                    break;
+            }
 
-        //apply mood time
-        Invoke("determineMood", moodTime);
+            //apply mood time
+            Invoke("determineMood", moodTime);
+        }
+    }
 
+    public void triggerBusy()
+    {
+    }
+
+    public void triggerReady()
+    {
+        //only change if needed
+        if(moodID != newMoodID)
+        {
+            moodID = newMoodID;
+            changeMood();
+        }
     }
 }

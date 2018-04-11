@@ -8,6 +8,7 @@ using System;
 public class _sceneDirector : MonoBehaviour {
 
     public string nextSceneName = "ledFace_Off";
+    public int currentScenenumber = 0;
 
     // Use this for initialization
     void Start () {
@@ -57,26 +58,31 @@ public class _sceneDirector : MonoBehaviour {
         if(Input.GetKeyUp(KeyCode.F1) == true)
         {
             nextSceneName = "ledFace_Off";
+            currentScenenumber = 0;
             showTransition();
         }
         if(Input.GetKeyUp(KeyCode.F2) == true)
         {
             nextSceneName = "bend-r-init";
+            currentScenenumber = 1;
             showTransition();
         }
         if (Input.GetKeyUp(KeyCode.F3) == true)
         {
             nextSceneName = "eeve-init";
+            currentScenenumber = 2;
             showTransition();
         }
         if (Input.GetKeyUp(KeyCode.F4) == true)
         {
             nextSceneName = "gearHead_init";
+            currentScenenumber = 3;
             showTransition();
         }
         if(Input.GetKeyUp(KeyCode.F5) == true)
         {
             nextSceneName = "roboFace-init";
+            currentScenenumber = 4;
             showTransition();
         }
     }
@@ -103,27 +109,33 @@ public class _sceneDirector : MonoBehaviour {
             case 0:
                 // led matrix face
                 nextSceneName = "ledFace_Off";
+                currentScenenumber = 0;
                 break;
             case 1:
                 //bend-r rodruigez
                 nextSceneName = "bend-r-init";
+                currentScenenumber = 1;
                 break;
             case 2:
                 //eeve
                 nextSceneName = "eeve-init";
+                currentScenenumber = 2;
                 break;
             case 3:
                 //gearhead
                 nextSceneName = "gearHead_init";
+                currentScenenumber = 3;
                 break;
             case 4:
                 //roboface
                 nextSceneName = "roboFace-init";
+                currentScenenumber = 4;
                 break;
 
             default:
                 // led matrix face
                 nextSceneName = "ledFace_Off";
+                currentScenenumber = 5;
                 break;
 
         }

@@ -18,6 +18,7 @@ public class ledFace_Angry : MonoBehaviour {
 
     void changeScene()
     {
+        GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
         int randomScene = Random.Range(0, 4);
         switch (randomScene)
         {

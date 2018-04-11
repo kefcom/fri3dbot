@@ -5,6 +5,7 @@ using System;
 public class roboFaceScript : MonoBehaviour
 {
     private int moodID;
+    private int newMoodID;
 
 
     // Use this for initialization
@@ -14,6 +15,8 @@ public class roboFaceScript : MonoBehaviour
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
+            moodID = 0;
+            newMoodID = 0;
             Invoke("determineMood", 1f);
         }
         else
@@ -44,6 +47,7 @@ public class roboFaceScript : MonoBehaviour
             {
                 moodID = 1; // change to max emotions
             }
+            newMoodID = moodID;
             changeMood();
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
@@ -57,33 +61,58 @@ public class roboFaceScript : MonoBehaviour
             {
                 moodID = 0;
             }
+            newMoodID = moodID;
             changeMood();
         }
     }
 
     void determineMood()
     {      
-        int moodID = UnityEngine.Random.Range(0, 2); // choose next mood between 0(inclusive) and 13(exclusive)
+        newMoodID = UnityEngine.Random.Range(0, 2); // choose next mood between 0(inclusive) and 13(exclusive)
         changeMood();
     }
 
     void changeMood()
     {
-        int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
-        switch (moodID)
+        if (newMoodID != moodID)
         {
-            case 0:
-                //loading
-                SceneManager.LoadScene("roboFace-loading");
-                break;
-            case 1:
-                //looking
-                SceneManager.LoadScene("roboFace-looking");
-                break;
-            default:
-                //init
-                SceneManager.LoadScene("roboFace-init");
-                break;
+            // scene is not ready for change yet... (animation not done yet)
+        }
+        else
+        {
+            int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
+            switch (moodID)
+            {
+                case 0:
+                    //loading
+                    SceneManager.LoadScene("roboFace-loading");
+                    break;
+                case 1:
+                    //looking
+                    SceneManager.LoadScene("roboFace-looking");
+                    break;
+                default:
+                    //init
+                    SceneManager.LoadScene("roboFace-init");
+                    break;
+            }
+            //apply mood time
+            Invoke("determineMood", moodTime);
+        }
+    }
+
+    public void triggerBusy()
+    {
+
+    }
+
+    public void triggerReady()
+    {
+        //only change if needed
+        if (moodID != newMoodID)
+        {
+            moodID = newMoodID;
+            changeMood();
         }
     }
 }
