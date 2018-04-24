@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/ledFace/crash/ledFace_Crash00.unity
+- path: Assets/scenes/_startup.unity
   isLoaded: 1
   isActive: 1

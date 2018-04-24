@@ -105,7 +105,7 @@ public class bendrScript : MonoBehaviour {
                     break;
                 case 4:
                     //drunk (animation)
-                    moodTime = 25;
+                    moodTime = 15;
                     SceneManager.LoadScene("bend-rDrunk");
                     break;
                 case 5:

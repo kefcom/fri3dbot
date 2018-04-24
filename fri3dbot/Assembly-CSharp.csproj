@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\_animationScript.cs" />
      <Compile Include="Assets\scripts\_OverlayScript.cs" />
      <Compile Include="Assets\scripts\_sceneDirector.cs" />
      <Compile Include="Assets\scripts\_startupScript.cs" />
