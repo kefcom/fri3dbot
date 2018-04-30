@@ -353,3 +353,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/roboFace/looking/roboFace-looking.unity
     guid: 7b2fb4be49e972b4885f62c479269d3b
+  - enabled: 1
+    path: Assets/scenes/roboFace/dj/roboFace-dj.unity
+    guid: d71f25f87a8440b488cf333464395a9a

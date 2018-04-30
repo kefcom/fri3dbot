@@ -4,7 +4,6 @@ using System;
 
 
 public class ledFaceScript : MonoBehaviour {
-    private string mood = "Happy";
     private int moodID;
     private int newMoodID;
 
@@ -67,6 +66,10 @@ public class ledFaceScript : MonoBehaviour {
     public void determineMood()
     {
         newMoodID = UnityEngine.Random.Range(0, 13); // choose next mood between 0(inclusive) and 13(exclusive)
+        if (newMoodID == moodID)
+        {
+            determineMood();
+        }
         changeMood();
     }
 
@@ -93,22 +96,18 @@ public class ledFaceScript : MonoBehaviour {
             {
                 case 0:
                     //happy (random)
-                    mood = "Happy";
                     SceneManager.LoadScene("ledFace_Happy00");
                     break;
                 case 1:
                     //angry (random)
-                    mood = "Angry";
                     SceneManager.LoadScene("ledFace_Angry00");
                     break;
                 case 2:
                     //Error (sequence)
-                    mood = "Error";
                     SceneManager.LoadScene("ledFace_Error00");
                     break;
                 case 3:
                     //Looking (random)
-                    mood = "Looking";
                     SceneManager.LoadScene("ledFace_Looking00");
                     break;
                 case 4:
@@ -126,7 +125,6 @@ public class ledFaceScript : MonoBehaviour {
                     else
                     {
                         // it's between 19:00 and 7:00, so go right ahead sleepy...
-                        mood = "Sleeping";
                         moodTime = UnityEngine.Random.Range(60, 300); // sleep for 1 to 5 minutes
                         SceneManager.LoadScene("ledFace_Sleeping00");
                     }
@@ -135,7 +133,6 @@ public class ledFaceScript : MonoBehaviour {
                     //Special (blow kiss)
                     //override new mood time
                     moodTime = 2;
-                    mood = "Love1";
                     SceneManager.LoadScene("ledFace_Love00");
                     break;
                 case 6:
@@ -154,7 +151,6 @@ public class ledFaceScript : MonoBehaviour {
                     {
                         // it's between 22:00 and 4:00, so Party on!
                         moodTime = 10; //fixed animation time
-                        mood = "Party";
                         SceneManager.LoadScene("ledFace_Party00");
                     }
                     break;
@@ -162,53 +158,44 @@ public class ledFaceScript : MonoBehaviour {
                     //Special2 (love fri3d)
                     //override new mood time
                     moodTime = 5;
-                    mood = "Love2";
                     SceneManager.LoadScene("ledFace_Love01");
                     break;
                 case 8:
                     //Game (sequence once)
                     moodTime = 15;
-                    mood = "Game";
                     SceneManager.LoadScene("ledFace_Game00");
                     break;
                 case 9:
                     //Robot (sequence)
-                    mood = "Robot";
                     SceneManager.LoadScene("ledFace_Robot00");
                     break;
                 case 10:
                     //Confused (sequence)
-                    mood = "Confused";
                     SceneManager.LoadScene("ledFace_Confused00");
                     break;
                 case 11:
                     //Leughing (random)
-                    mood = "Laughing";
                     SceneManager.LoadScene("ledFace_Laughing00");
                     break;
                 case 12:
                     //Crash (single frame with unity physx)
                     moodTime = 15;
-                    mood = "Crash";
                     SceneManager.LoadScene("ledFace_Crash00");
                     break;
                 case 13:
                     //Special (heart eyes)
                     //override new mood time
                     moodTime = 2;
-                    mood = "Love3";
                     SceneManager.LoadScene("ledFace_Love02");
                     break;
                 case 14:
                     //Game2 (sequence)
-                    mood = "Game2";
                     SceneManager.LoadScene("ledFace_Game200");
                     break;
 
 
                 default:
                     // Happy
-                    mood = "Happy";
                     SceneManager.LoadScene("ledFace_Happy00");
                     break;
             }

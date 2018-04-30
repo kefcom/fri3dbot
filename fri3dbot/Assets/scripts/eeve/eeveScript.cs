@@ -67,6 +67,10 @@ public class eeveScript : MonoBehaviour {
     {
 
         newMoodID = UnityEngine.Random.Range(0, 7); // choose next mood between x (inclusive) and x (exclusive)
+        if (newMoodID == moodID)
+        {
+            determineMood();
+        }
         changeMood();
     }
 

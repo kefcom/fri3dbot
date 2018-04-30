@@ -12,7 +12,6 @@ public class _OverlayScript : MonoBehaviour
     private GameObject thisCanvas = null;
     private GameObject thisTextField = null;
     private GameObject thisCodeField = null;
-    private string thisScene = null;
     public int currentSecurityCode = 123;
     public int lastSecurityCode = 321;
     public float securityCodeTime = 60f;
@@ -25,7 +24,6 @@ public class _OverlayScript : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "_startup")
         {
             // don't destroy this object
-            thisScene = SceneManager.GetActiveScene().name;
             DontDestroyOnLoad(this);
             //create hook for scenechange
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
@@ -77,9 +75,6 @@ public class _OverlayScript : MonoBehaviour
         //security code
         thisCodeField = GameObject.Find("topText").gameObject;
         thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString();
-
-        //update scene var
-        thisScene = SceneManager.GetActiveScene().name;
 
         //override colors for some faces
         //bend-r (background is gray)

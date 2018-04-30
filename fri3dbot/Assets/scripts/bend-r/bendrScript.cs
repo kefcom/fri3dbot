@@ -66,7 +66,10 @@ public class bendrScript : MonoBehaviour {
     void determineMood()
     {      
         newMoodID = UnityEngine.Random.Range(0, 9); // choose next mood between 0(inclusive) and 9 exclusive)
-        Debug.Log("new mood will be: " + newMoodID.ToString());
+        if (newMoodID == moodID)
+        {
+            determineMood();
+        }
         changeMood();
     }
 
