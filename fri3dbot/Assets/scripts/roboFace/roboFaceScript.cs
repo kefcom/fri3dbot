@@ -11,7 +11,7 @@ public class roboFaceScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (SceneManager.GetActiveScene().name.Substring(0, 13) == "roboFace-init")
+        if (SceneManager.GetActiveScene().name == "roboFace-init")
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
