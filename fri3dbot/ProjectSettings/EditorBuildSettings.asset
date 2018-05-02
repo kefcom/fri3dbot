@@ -356,3 +356,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/roboFace/dj/roboFace-dj.unity
     guid: d71f25f87a8440b488cf333464395a9a
+  - enabled: 1
+    path: Assets/scenes/roboFace/fri3d/roboFace-fri3d.unity
+    guid: a0569bcf1e246dc4f9d61a28e1d9cb75

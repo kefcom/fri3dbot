@@ -18,7 +18,6 @@ public class ledFaceSleeping : MonoBehaviour {
 
     void changeScene()
     {
-        GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
         int randomScene = Random.Range(0, 3);
         switch (randomScene)
         {

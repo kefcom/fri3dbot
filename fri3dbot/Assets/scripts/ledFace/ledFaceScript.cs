@@ -15,7 +15,6 @@ public class ledFaceScript : MonoBehaviour {
             // don't destroy this object
             DontDestroyOnLoad(this);
             moodID = 0;
-            newMoodID = 0;
             Invoke("determineMood", 1f);
         }
         else
@@ -42,15 +41,14 @@ public class ledFaceScript : MonoBehaviour {
             }
             else
             {
-                moodID = 13; // change to max emotions
+                moodID = 14; // change to max emotions
             }
-            newMoodID = moodID;
             changeMood();
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 13) // change to max emotions
+            if (moodID < 14) // change to max emotions
             {
                 moodID++;
             }
@@ -58,39 +56,24 @@ public class ledFaceScript : MonoBehaviour {
             {
                 moodID = 0;
             }
-            newMoodID = moodID;
             changeMood();
         }
     }
 
     public void determineMood()
     {
-        newMoodID = UnityEngine.Random.Range(0, 13); // choose next mood between 0(inclusive) and 13(exclusive)
-        if (newMoodID == moodID)
+        Debug.Log("determineMood triggered");
+        newMoodID = UnityEngine.Random.Range(0, 14); // choose next mood between 0(inclusive) and 13(exclusive)
+        if (newMoodID == moodID) // make sure same mood is never selected twice in a row.
         {
             determineMood();
         }
+        moodID = newMoodID;
         changeMood();
     }
 
     void changeMood()
     {
-        if (newMoodID != moodID)
-        {
-            // scene is not ready for change yet... (animation not done yet)
-            if (moodID == 0)
-            {
-                moodID = newMoodID;
-                changeMood();
-            }
-            if (moodID == 12)
-            {
-                moodID = newMoodID;
-                changeMood();
-            }
-        }
-        else
-        {
             int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
             switch (moodID)
             {
@@ -170,25 +153,21 @@ public class ledFaceScript : MonoBehaviour {
                     SceneManager.LoadScene("ledFace_Robot00");
                     break;
                 case 10:
-                    //Confused (sequence)
-                    SceneManager.LoadScene("ledFace_Confused00");
-                    break;
-                case 11:
                     //Leughing (random)
                     SceneManager.LoadScene("ledFace_Laughing00");
                     break;
-                case 12:
+                case 11:
                     //Crash (single frame with unity physx)
                     moodTime = 15;
                     SceneManager.LoadScene("ledFace_Crash00");
                     break;
-                case 13:
+                case 12:
                     //Special (heart eyes)
                     //override new mood time
                     moodTime = 2;
                     SceneManager.LoadScene("ledFace_Love02");
                     break;
-                case 14:
+                case 13:
                     //Game2 (sequence)
                     SceneManager.LoadScene("ledFace_Game200");
                     break;
@@ -200,23 +179,8 @@ public class ledFaceScript : MonoBehaviour {
                     break;
             }
 
-            //apply mood time
+        //apply mood time
+        Debug.Log("New mood in " + moodTime.ToString() + " seconds");
             Invoke("determineMood", moodTime);
         }
-    }
-
-    public void triggerBusy()
-    {
-
-    }
-
-    public void triggerReady()
-    {
-        //only change if needed
-        if (moodID != newMoodID)
-        {
-            moodID = newMoodID;
-            changeMood();
-        }
-    }
 }

@@ -22,7 +22,6 @@ public class ledFace_Game : MonoBehaviour {
         switch (SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length - 2, 2))
         {
             case "00":
-                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerBusy();
                 SceneManager.LoadScene("ledFace_Game01");
                 break;
             case "01":
@@ -52,7 +51,6 @@ public class ledFace_Game : MonoBehaviour {
             case "09":
                 // animation only runs once
                 GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().determineMood();
-                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
                 break;
             default:
                 SceneManager.LoadScene("ledFace_Error00");

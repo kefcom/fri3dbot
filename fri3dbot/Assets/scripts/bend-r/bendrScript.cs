@@ -100,10 +100,14 @@ public class bendrScript : MonoBehaviour {
                     break;
                 case 2:
                     //Error (animation)
+                    moodTime = UnityEngine.Random.Range(2, 6);
+                    //beter not to show errors too long, they so sad :(
                     SceneManager.LoadScene("bend-rError00");
                     break;
                 case 3:
                     //Error2 (animation)
+                    //beter not to show errors too long, they so sad :(
+                    //except this one... cuz it's funny :)
                     SceneManager.LoadScene("bend-rError200");
                     break;
                 case 4:

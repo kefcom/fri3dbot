@@ -18,8 +18,6 @@ public class ledFace_Happy : MonoBehaviour {
 
     void changeScene()
     {
-        GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
-        //switch (SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length - 2,2))
         int randomScene = Random.Range(0, 4);
         switch (randomScene)
         {

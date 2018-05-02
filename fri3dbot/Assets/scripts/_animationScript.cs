@@ -36,7 +36,7 @@ public class _animationScript : MonoBehaviour {
                 break;
             case "ledF":
                 //ledFace script
-                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
+                // ledface does not have end_anim but is time-based
                 break;
             case "robo":
                 //roboHead script

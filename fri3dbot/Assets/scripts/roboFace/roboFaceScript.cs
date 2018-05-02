@@ -45,7 +45,7 @@ public class roboFaceScript : MonoBehaviour
             }
             else
             {
-                moodID = 3; // change to max emotions
+                moodID = 4; // change to max emotions
             }
             newMoodID = moodID;
             changeMood();
@@ -53,7 +53,7 @@ public class roboFaceScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 3) // change to max emotions
+            if (moodID < 4) // change to max emotions
             {
                 moodID++;
             }
@@ -68,7 +68,7 @@ public class roboFaceScript : MonoBehaviour
 
     void determineMood()
     {      
-        newMoodID = UnityEngine.Random.Range(0, 3); // choose next mood between 0(inclusive) and 13(exclusive)
+        newMoodID = UnityEngine.Random.Range(0, 4); // choose next mood between 0(inclusive) and 13(exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
@@ -98,6 +98,10 @@ public class roboFaceScript : MonoBehaviour
                 case 2:
                     //looking
                     SceneManager.LoadScene("roboFace-dj");
+                    break;
+                case 3:
+                    //fri3d
+                    SceneManager.LoadScene("roboFace-fri3d");
                     break;
                 default:
                     //init
