@@ -7,8 +7,17 @@ public class ledFace_Laughing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        float randomTime = Random.Range(0.1f, 0.3f);
-        Invoke("changeScene", randomTime);
+        if (SceneManager.GetActiveScene().name.Substring(0, 16) == "ledFace_Laughing")
+        {
+            float randomTime = Random.Range(0.1f, 0.3f);
+            Invoke("changeScene", randomTime);
+        }
+        else
+        {
+            Debug.Log("destroyed script ledFace_Laughing");
+            Destroy(this.gameObject);
+        }
+
     }
 	
 	// Update is called once per frame

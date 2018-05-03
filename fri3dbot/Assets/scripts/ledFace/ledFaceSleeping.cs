@@ -7,8 +7,17 @@ public class ledFaceSleeping : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        float randomTime = Random.Range(0.5f, 5f);
-        Invoke("changeScene", randomTime);
+        if (SceneManager.GetActiveScene().name.Substring(0, 16) == "ledFace_Sleeping")
+        {
+            float randomTime = Random.Range(0.5f, 5f);
+            Invoke("changeScene", randomTime);
+        }
+        else
+        {
+            Debug.Log("destroyed script ledFace_Sleeping");
+            Destroy(this.gameObject);
+        }
+
     }
 	
 	// Update is called once per frame

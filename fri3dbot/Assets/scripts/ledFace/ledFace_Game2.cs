@@ -7,7 +7,15 @@ public class ledFace_Game2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke("changeScene", 0.5f);
+        if (SceneManager.GetActiveScene().name.Substring(0, 13) == "ledFace_Game2")
+        {
+            Invoke("changeScene", 0.5f);
+        }
+        else
+        {
+            Debug.Log("destroyed script ledFace_Game2");
+            Destroy(this.gameObject);
+        }
     }
 	
 	// Update is called once per frame

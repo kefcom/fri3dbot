@@ -10,10 +10,12 @@ public class ledFaceScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        
         if (SceneManager.GetActiveScene().name.Substring(0,11) == "ledFace_Off")
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
+            //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "ledFaceScript started without being destroyed!-----------------------------");
             moodID = 0;
             Invoke("determineMood", 1f);
         }
@@ -29,6 +31,7 @@ public class ledFaceScript : MonoBehaviour {
         if (SceneManager.GetActiveScene().name.Substring(0, 5) == "_tran")
         {
             Destroy(this.gameObject);
+            return;
         }
 
         //listen for keys to change mood
@@ -62,11 +65,13 @@ public class ledFaceScript : MonoBehaviour {
 
     public void determineMood()
     {
-        Debug.Log("determineMood triggered");
+        //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "determineMood triggered");
         newMoodID = UnityEngine.Random.Range(0, 14); // choose next mood between 0(inclusive) and 13(exclusive)
         if (newMoodID == moodID) // make sure same mood is never selected twice in a row.
         {
+            //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "same mood as last time... trying again...");
             determineMood();
+            return;
         }
         moodID = newMoodID;
         changeMood();
@@ -74,7 +79,8 @@ public class ledFaceScript : MonoBehaviour {
 
     void changeMood()
     {
-            int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
+        //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + " Trying to change to new id: " + moodID + "");
+        int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
             switch (moodID)
             {
                 case 0:
@@ -104,7 +110,8 @@ public class ledFaceScript : MonoBehaviour {
                     {
                         // can't trigger now, choose another mood
                         determineMood();
-                    }
+                    return; //exit the routine instead of re-calculating moodtimes
+                }
                     else
                     {
                         // it's between 19:00 and 7:00, so go right ahead sleepy...
@@ -129,7 +136,8 @@ public class ledFaceScript : MonoBehaviour {
                     {
                         // can't trigger now, choose another mood
                         determineMood();
-                    }
+                    return; //exit the routine instead of re-calculating moodtimes
+                }
                     else
                     {
                         // it's between 22:00 and 4:00, so Party on!
@@ -179,8 +187,8 @@ public class ledFaceScript : MonoBehaviour {
                     break;
             }
 
-        //apply mood time
-        Debug.Log("New mood in " + moodTime.ToString() + " seconds");
+            //apply mood time
+            //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "Mood changed to ID " + moodID + " for " + moodTime.ToString() + " seconds");
             Invoke("determineMood", moodTime);
         }
 }

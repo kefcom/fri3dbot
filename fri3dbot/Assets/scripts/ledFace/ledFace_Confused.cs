@@ -8,7 +8,15 @@ public class ledFace_Confused : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke("changeScene", 0.3f);
+        if (SceneManager.GetActiveScene().name.Substring(0, 16) == "ledFace_Confused")
+        {
+            Invoke("changeScene", 0.3f);
+        }
+        else
+        {
+            Debug.Log("destroyed script ledface_Confused");
+            Destroy(this.gameObject);
+        }
     }
 	
 	// Update is called once per frame

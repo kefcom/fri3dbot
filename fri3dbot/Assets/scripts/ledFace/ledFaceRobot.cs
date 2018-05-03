@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+
 
 public class ledFaceRobot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke("changeScene", 0.5f);
+        if (SceneManager.GetActiveScene().name.Substring(0, 13) == "ledFace_Robot")
+        {
+            Invoke("changeScene", 0.5f);
+        }
+        else
+        {
+            Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "destroyed script ledFace_Robot -> current scene name is " + SceneManager.GetActiveScene().name);
+            Destroy(this.gameObject);
+        }
+        
     }
 	
 	// Update is called once per frame

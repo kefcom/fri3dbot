@@ -7,7 +7,15 @@ public class ledFace_Error : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Invoke("changeScene", 0.1f);
+        if (SceneManager.GetActiveScene().name.Substring(0, 13) == "ledFace_Error")
+        {
+            Invoke("changeScene", 0.3f);
+        }
+        else
+        {
+            Debug.Log("destroyed script ledface_Error");
+            Destroy(this.gameObject);
+        }
     }
 	
 	// Update is called once per frame

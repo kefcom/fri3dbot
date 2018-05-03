@@ -18,5 +18,6 @@ public class ledFaceParty_start_drinking : MonoBehaviour {
     void goToNextScene()
     {
         SceneManager.LoadScene("ledFace_Party01");
+
     }
 }
