@@ -66,7 +66,7 @@ public class foxkehScript : MonoBehaviour {
     void determineMood()
     {
 
-        newMoodID = UnityEngine.Random.Range(0, 3); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, 6); // choose next mood between x (inclusive) and x (exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
@@ -101,6 +101,14 @@ public class foxkehScript : MonoBehaviour {
                 case 3:
                     //tilt
                     SceneManager.LoadScene("foxkeh-Tilt");
+                    break;
+                case 4:
+                    //badge
+                    SceneManager.LoadScene("foxkeh-Badge");
+                    break;
+                case 5:
+                    //coon
+                    SceneManager.LoadScene("foxkeh-Coon");
                     break;
                 default:
                     //idle
