@@ -85,6 +85,12 @@ public class _sceneDirector : MonoBehaviour {
             currentScenenumber = 4;
             showTransition();
         }
+        if (Input.GetKeyUp(KeyCode.F6) == true)
+        {
+            nextSceneName = "foxkeh-Init";
+            currentScenenumber = 5;
+            showTransition();
+        }
     }
 
 
@@ -103,7 +109,7 @@ public class _sceneDirector : MonoBehaviour {
 
     public void loadRandomScene()
     {
-        int randomScene = UnityEngine.Random.Range(0, 4);
+        int randomScene = UnityEngine.Random.Range(0, 5);
         switch(randomScene)
         {
             case 0:
@@ -131,7 +137,11 @@ public class _sceneDirector : MonoBehaviour {
                 nextSceneName = "roboFace-init";
                 currentScenenumber = 4;
                 break;
-
+            case 5:
+                //foxkeh
+                nextSceneName = "foxkeh-Init";
+                currentScenenumber = 5;
+                break;
             default:
                 // led matrix face
                 nextSceneName = "ledFace_Off";

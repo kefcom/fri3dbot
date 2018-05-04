@@ -42,6 +42,10 @@ public class _animationScript : MonoBehaviour {
                 //roboHead script
                 GameObject.Find("roboScriptHolder").GetComponent<roboFaceScript>().triggerReady();
                 break;
+            case "foxk":
+                //foxkeh script
+                GameObject.Find("foxkehScriptHolder").GetComponent<foxkehScript>().triggerReady();
+                break;
             default:
                 //do nothing
                 Debug.Log("unexpected state 'default' in _animationScript.cs");
