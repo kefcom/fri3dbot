@@ -109,7 +109,7 @@ public class _sceneDirector : MonoBehaviour {
 
     public void loadRandomScene()
     {
-        int randomScene = UnityEngine.Random.Range(0, 5);
+        int randomScene = UnityEngine.Random.Range(0, 6);
         switch(randomScene)
         {
             case 0:
