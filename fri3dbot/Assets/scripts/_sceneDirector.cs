@@ -22,7 +22,7 @@ public class _sceneDirector : MonoBehaviour {
 
     void showTransition()
     {
-        int transitionNumber = UnityEngine.Random.Range(0, 5);
+        int transitionNumber = UnityEngine.Random.Range(0, 6);
         float waitingTime = UnityEngine.Random.Range(2f, 5f);
         switch (transitionNumber)
         {
@@ -42,7 +42,9 @@ public class _sceneDirector : MonoBehaviour {
                 SceneManager.LoadScene("_transition_blocks");
                 waitingTime = 8f;
                 break;
-
+            case 5:
+                SceneManager.LoadScene("_transition_Fri3dlogo");
+                break;
 
             default:
                 SceneManager.LoadScene("_transition_static");
