@@ -345,7 +345,7 @@ EditorBuildSettings:
     path: Assets/scenes/ledFace/init/ledFace_Off.unity
     guid: b424ac2bc5fb15044a0d09018c3388fa
   - enabled: 1
-    path: Assets/scenes/roboFace/init/roboFace-init.unity
+    path: Assets/scenes/roboFace/roboFace-design.unity
     guid: dfecec4d3c666c2478e754b2cce74414
   - enabled: 1
     path: Assets/scenes/roboFace/loading/roboFace-loading.unity
@@ -383,3 +383,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/transitions/_transition_Fri3dlogo.unity
     guid: 8a2943c3dada49241bbbf74cd393ad67
+  - enabled: 1
+    path: Assets/scenes/roboFace/init/roboFace-init.unity
+    guid: bbcf636cf17ed7f429100e1bc8a89a97
