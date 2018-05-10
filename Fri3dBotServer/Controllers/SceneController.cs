@@ -15,11 +15,11 @@ namespace Fri3dBotServer.Controllers
 
         [HttpGet]
         [Route("new")]
-        public IActionResult GetScenes()
+        public string GetScenes()
         {
             var rng = new Random();
             var randomPos =  rng.Next(Scenes.Length);
-            return Ok(Scenes[randomPos]);
+            return Scenes[randomPos];
         }
     }
 }
