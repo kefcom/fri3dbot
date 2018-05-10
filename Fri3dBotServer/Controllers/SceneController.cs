@@ -11,16 +11,15 @@ namespace Fri3dBotServer.Controllers
     {
         private static string[] Scenes = new[]
         {
-            "bend-r-init", "eeve-init", "gearHead_init", 
-        };
+            "bend-r-init", "eeve-init", "gearHead_init"};
 
         [HttpGet]
         [Route("new")]
-        public string GetScenes()
+        public IActionResult GetScenes()
         {
             var rng = new Random();
             var randomPos =  rng.Next(Scenes.Length);
-            return Scenes[randomPos];
+            return Ok(Scenes[randomPos]);
         }
     }
 }
