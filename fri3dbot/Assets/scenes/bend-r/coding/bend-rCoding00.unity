@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 1855810264}
   - component: {fileID: 1855810263}
   m_Layer: 0
-  m_Name: scriptHolder
+  m_Name: bendRScriptHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

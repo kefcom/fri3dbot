@@ -20,6 +20,7 @@ public class ledFaceRobot : MonoBehaviour {
         switch (SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length - 2, 2))
         {
             case "00":
+                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerBusy();
                 SceneManager.LoadScene("ledFace_Robot01");
                 break;
             case "01":
@@ -41,6 +42,7 @@ public class ledFaceRobot : MonoBehaviour {
                 SceneManager.LoadScene("ledFace_Robot07");
                 break;
             case "07":
+                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
                 SceneManager.LoadScene("ledFace_Robot00");
                 break;
             default:

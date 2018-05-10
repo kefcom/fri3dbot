@@ -195,6 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231399379}
   - component: {fileID: 231399378}
+  - component: {fileID: 231399380}
   m_Layer: 0
   m_Name: animationHolder
   m_TagString: Untagged
@@ -234,6 +235,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &231399380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231399377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5173250a5332a146b7a1e0567946553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBusy: 0
 --- !u!4 &293679025 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 325d1b7583530774eb46d595acc23d41, type: 3}
@@ -252,6 +265,7 @@ GameObject:
   - component: {fileID: 558502427}
   - component: {fileID: 558502426}
   - component: {fileID: 558502428}
+  - component: {fileID: 558502429}
   m_Layer: 0
   m_Name: eyes
   m_TagString: Untagged
@@ -326,7 +340,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558502425}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dcda3c193a2152644a0c0b3873043cf9, type: 2}
   m_CullingMode: 0
@@ -336,6 +350,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &558502429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558502425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5173250a5332a146b7a1e0567946553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBusy: 0
 --- !u!1 &804362517
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +934,7 @@ GameObject:
   - component: {fileID: 1855810264}
   - component: {fileID: 1855810263}
   m_Layer: 0
-  m_Name: scriptHolder
+  m_Name: bendRScriptHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

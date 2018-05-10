@@ -967,6 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009597572}
   - component: {fileID: 1009597573}
+  - component: {fileID: 1009597574}
   m_Layer: 0
   m_Name: animationHolder_roboface_loading
   m_TagString: Untagged
@@ -1005,6 +1006,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1009597574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009597571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5173250a5332a146b7a1e0567946553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBusy: 0
 --- !u!1 &1202177932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,7 +1766,7 @@ GameObject:
   - component: {fileID: 1855810264}
   - component: {fileID: 1855810263}
   m_Layer: 0
-  m_Name: scriptHolder
+  m_Name: roboScriptHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1765,7 +1778,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855810262}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88066c90c6e8a83478b92c516fc84a7a, type: 3}
   m_Name: 

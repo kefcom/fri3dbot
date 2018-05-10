@@ -20,6 +20,7 @@ public class ledFace_Game2 : MonoBehaviour {
         switch (SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length - 2, 2))
         {
             case "00":
+                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
                 SceneManager.LoadScene("ledFace_Game201");
                 break;
             case "01":
@@ -95,6 +96,7 @@ public class ledFace_Game2 : MonoBehaviour {
                 SceneManager.LoadScene("ledFace_Game225");
                 break;
             case "25":
+                GameObject.Find("scriptHolder").GetComponent<ledFaceScript>().triggerReady();
                 SceneManager.LoadScene("ledFace_Game200");
                 break;
             default:

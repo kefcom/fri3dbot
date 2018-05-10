@@ -397,7 +397,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 964453079}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eefd84470f3b4e64da6eaaf98b86229f, type: 3}
+  m_Script: {fileID: 11500000, guid: aa1899b5a0538b74c85b939a4649d08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: ledFace_Off
@@ -449,11 +449,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1045502179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf44c9701dc5ca34caff0f36972b8e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Timeout: 5
 --- !u!1001 &1499674774
 Prefab:
   m_ObjectHideFlags: 0
@@ -491,7 +492,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 325d1b7583530774eb46d595acc23d41, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 325d1b7583530774eb46d595acc23d41, type: 3}
       propertyPath: m_LocalScale.x
@@ -665,6 +666,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -680,5 +682,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

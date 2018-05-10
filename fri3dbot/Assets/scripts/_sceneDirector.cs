@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class _sceneDirector : MonoBehaviour {
 
     public string nextSceneName = "ledFace_Off";
+    public int currentScenenumber = 0;
 
     // Use this for initialization
     void Start () {
@@ -19,8 +21,9 @@ public class _sceneDirector : MonoBehaviour {
 
     void showTransition()
     {
-        int transitionNumber = Random.Range(0, 5);
-        switch(transitionNumber)
+        int transitionNumber = UnityEngine.Random.Range(0, 5);
+        float waitingTime = UnityEngine.Random.Range(2f, 5f);
+        switch (transitionNumber)
         {
             case 0:
                 SceneManager.LoadScene("_transition_static");
@@ -36,6 +39,7 @@ public class _sceneDirector : MonoBehaviour {
                 break;
             case 4:
                 SceneManager.LoadScene("_transition_blocks");
+                waitingTime = 8f;
                 break;
 
 
@@ -43,50 +47,94 @@ public class _sceneDirector : MonoBehaviour {
                 SceneManager.LoadScene("_transition_static");
                 break;
         }
-        float waitingTime = Random.Range(2f, 5f);
+        
         Invoke("loadScene",waitingTime);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		//listen for keys to change face
+        if(Input.GetKeyUp(KeyCode.F1) == true)
+        {
+            nextSceneName = "ledFace_Off";
+            currentScenenumber = 0;
+            showTransition();
+        }
+        if(Input.GetKeyUp(KeyCode.F2) == true)
+        {
+            nextSceneName = "bend-r-init";
+            currentScenenumber = 1;
+            showTransition();
+        }
+        if (Input.GetKeyUp(KeyCode.F3) == true)
+        {
+            nextSceneName = "eeve-init";
+            currentScenenumber = 2;
+            showTransition();
+        }
+        if (Input.GetKeyUp(KeyCode.F4) == true)
+        {
+            nextSceneName = "gearHead_init";
+            currentScenenumber = 3;
+            showTransition();
+        }
+        if(Input.GetKeyUp(KeyCode.F5) == true)
+        {
+            nextSceneName = "roboFace-init";
+            currentScenenumber = 4;
+            showTransition();
+        }
+    }
 
 
     public void loadScene()
     {
         SceneManager.LoadScene(nextSceneName);
         // load another random scene
-        float newSceneTime = Random.Range(120f, 600f); //random between 2 and 10 minutes       
+        float newSceneTime = UnityEngine.Random.Range(120f, 600f); //random between 2 and 10 minutes       
+        TimeSpan newTime = new TimeSpan(System.DateTime.Now.TimeOfDay.Hours,System.DateTime.Now.TimeOfDay.Minutes,System.DateTime.Now.TimeOfDay.Seconds + Mathf.RoundToInt(newSceneTime));
+        Debug.Log("New scene in " + newSceneTime.ToString() + " Seconds (= " + newTime.ToString()  + " )");
+
+        //load new scene in <x> time
         Invoke("loadRandomScene", newSceneTime);
     }
 
 
     public void loadRandomScene()
     {
-        int randomScene = Random.Range(0, 4);
+        int randomScene = UnityEngine.Random.Range(0, 4);
         switch(randomScene)
         {
             case 0:
                 // led matrix face
                 nextSceneName = "ledFace_Off";
+                currentScenenumber = 0;
                 break;
             case 1:
                 //bend-r rodruigez
                 nextSceneName = "bend-r-init";
+                currentScenenumber = 1;
                 break;
             case 2:
                 //eeve
                 nextSceneName = "eeve-init";
+                currentScenenumber = 2;
                 break;
             case 3:
                 //gearhead
                 nextSceneName = "gearHead_init";
+                currentScenenumber = 3;
+                break;
+            case 4:
+                //roboface
+                nextSceneName = "roboFace-init";
+                currentScenenumber = 4;
                 break;
 
             default:
                 // led matrix face
                 nextSceneName = "ledFace_Off";
+                currentScenenumber = 5;
                 break;
 
         }

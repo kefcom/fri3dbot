@@ -4,75 +4,110 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class _OverlayScript : MonoBehaviour {
+public class _OverlayScript : MonoBehaviour
+{
 
     public GameObject canvasPrefab = null;
     public float lastPosition = 0f;
     private GameObject thisCanvas = null;
     private GameObject thisTextField = null;
+    private GameObject thisCodeField = null;
     private string thisScene = null;
+    public int currentSecurityCode = 123;
+    public int lastSecurityCode = 321;
+    public float securityCodeTime = 60f;
+    public string overlayText = "";
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start()
+    {
         if (SceneManager.GetActiveScene().name == "_startup")
         {
             // don't destroy this object
             thisScene = SceneManager.GetActiveScene().name;
             DontDestroyOnLoad(this);
-
+            //create hook for scenechange
+            SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+            //set overlay text for startup
+            overlayText = "Loading fri3dbot";
         }
+        //set scene name as overlay text
+        overlayText = SceneManager.GetActiveScene().name.ToString();
+        //spawn overlay
+        spawnOverlay();
+        //trigger security code
+        Invoke("generateSecurityCode", 0.1f);
+    }
 
+    void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
+    {
+        //unless it's a transition scene, apply overlay
+        if (SceneManager.GetActiveScene().name.Substring(0, 6) != "_trans")
+        {
+            //set scene name as overlay text
+            overlayText = SceneManager.GetActiveScene().name.ToString();
+            spawnOverlay();
+        }
+    }
+
+
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    
+    public void spawnOverlay()
+    {
         //instantiate overlay object
-        thisCanvas = Instantiate(canvasPrefab, this.gameObject.transform.position  , this.gameObject.transform.rotation);
+        thisCanvas = Instantiate(canvasPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        //set canvas rendermode to camera
         thisCanvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+        //assign main camera to canvas
         thisCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
 
         //OverlayText
-        thisTextField = GameObject.Find("overlayText").gameObject;
-        thisTextField.GetComponent<Text>().text = "test";
+        thisTextField = GameObject.Find("bottomText").gameObject;
+        thisTextField.GetComponent<Text>().text = overlayText;
 
-        //set position of text
-        lastPosition = 0f;
-        // 0 - -425
-        Debug.Log(lastPosition);
-        Vector3 newPosition = new Vector3(lastPosition, thisTextField.transform.position.y, thisTextField.transform.position.z);
-        thisTextField.transform.position = newPosition;
+        //security code
+        thisCodeField = GameObject.Find("topText").gameObject;
+        thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString();
 
-    }
-   
+        //update scene var
+        thisScene = SceneManager.GetActiveScene().name;
 
-    // Update is called once per frame
-    void Update () {
-        if(SceneManager.GetActiveScene().name != thisScene)
+        //override colors for some faces
+        //bend-r (background is gray)
+        if (SceneManager.GetActiveScene().name.Substring(0,6) == "bend-r")
         {
-            Debug.Log("test");
-            //instantiate overlay object
-            thisCanvas = Instantiate(canvasPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            thisCanvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-            thisCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
-
-            //OverlayText
-            thisTextField = GameObject.Find("overlayText").gameObject;
-            thisTextField.GetComponent<Text>().text = "test";
-            thisScene = SceneManager.GetActiveScene().name;
+            thisTextField.GetComponent<Text>().color = Color.black;
+            thisCodeField.GetComponent<Text>().color = Color.black;
         }
-        lastPosition = (lastPosition - 0.1f);
-        Vector3 newPosition = new Vector3 (lastPosition, thisTextField.transform.position.y, thisTextField.transform.position.z);
-        thisTextField.transform.position = newPosition;
-
     }
 
-    public static float GetSizeOfText(Text text, string word)
+    public void generateSecurityCode()
     {
-        float width = 0.0f;
-        CharacterInfo charInfo;
-        foreach (char c in word)
-        {
-            text.font.GetCharacterInfo(c, out charInfo, text.fontSize);
+        //move current code to lastcode
+        lastSecurityCode = currentSecurityCode;
+        //generate new code
+        currentSecurityCode = Random.Range(100, 999);
+        //updateOverlay
+        thisCodeField = GameObject.Find("topText").gameObject;
+        thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString() ;
+        //run this function again in <x> time
+        Invoke("generateSecurityCode", securityCodeTime);
+    }
 
-            width += charInfo.advance;
-
-        }
-        return width;
+    public void setOverlayText(string text)
+    {
+        overlayText = text;
+        //update OverlayText
+        thisTextField = GameObject.Find("bottomText").gameObject;
+        thisTextField.GetComponent<Text>().text = overlayText;
     }
 }
