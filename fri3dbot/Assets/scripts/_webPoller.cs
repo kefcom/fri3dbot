@@ -11,7 +11,7 @@ public class _webPoller : MonoBehaviour {
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
-
+            GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(0);
         }
     }
 	

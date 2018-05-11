@@ -16,7 +16,7 @@ public class _sceneDirector : MonoBehaviour {
         {
             // don't destroy this object
             DontDestroyOnLoad(this);
-            Invoke("loadRandomScene", 5f);
+            Invoke("loadRandomFace", 5f);
         }
     }
 
@@ -51,7 +51,7 @@ public class _sceneDirector : MonoBehaviour {
                 break;
         }
         
-        Invoke("loadScene",waitingTime);
+        Invoke("switchToFace", waitingTime);
     }
 	
 	// Update is called once per frame
@@ -59,44 +59,32 @@ public class _sceneDirector : MonoBehaviour {
 		//listen for keys to change face
         if(Input.GetKeyUp(KeyCode.F1) == true)
         {
-            nextSceneName = "ledFace_Off";
-            currentScenenumber = 0;
-            showTransition();
+            loadFace(0);
         }
         if(Input.GetKeyUp(KeyCode.F2) == true)
         {
-            nextSceneName = "bend-r-init";
-            currentScenenumber = 1;
-            showTransition();
+            loadFace(1);
         }
         if (Input.GetKeyUp(KeyCode.F3) == true)
         {
-            nextSceneName = "eeve-init";
-            currentScenenumber = 2;
-            showTransition();
+            loadFace(2);
         }
         if (Input.GetKeyUp(KeyCode.F4) == true)
         {
-            nextSceneName = "gearHead_init";
-            currentScenenumber = 3;
-            showTransition();
+            loadFace(3);
         }
         if(Input.GetKeyUp(KeyCode.F5) == true)
         {
-            nextSceneName = "roboFace-init";
-            currentScenenumber = 4;
-            showTransition();
+            loadFace(4);
         }
         if (Input.GetKeyUp(KeyCode.F6) == true)
         {
-            nextSceneName = "foxkeh-Init";
-            currentScenenumber = 5;
-            showTransition();
+            loadFace(5);
         }
     }
 
 
-    public void loadScene()
+    public void switchToFace()
     {
         SceneManager.LoadScene(nextSceneName);
         // load another random scene
@@ -109,10 +97,27 @@ public class _sceneDirector : MonoBehaviour {
     }
 
 
-    public void loadRandomScene()
+    public void loadRandomFace()
     {
         int randomScene = UnityEngine.Random.Range(0, 6);
-        switch(randomScene)
+        setFace(randomScene);
+        Invoke("showTransition", 1f);
+    }
+
+    public void loadFace(int faceNumber)
+    {
+        CancelInvoke(); // cancel previous timers
+        setFace(faceNumber); // set the nextSceneName
+        // no need to show transition, just apply the new face
+        // however, a transition scene stopt individual face scripts, so a quick scene is required, we use a black screen for this one.
+        Invoke("switchToFace",0.5f);
+        SceneManager.LoadScene("_TransitionClear");
+
+    }
+
+    public void setFace(int faceNumber)
+    {
+        switch (faceNumber)
         {
             case 0:
                 // led matrix face
@@ -149,8 +154,7 @@ public class _sceneDirector : MonoBehaviour {
                 nextSceneName = "ledFace_Off";
                 currentScenenumber = 5;
                 break;
-
         }
-        Invoke("showTransition", 1f);
+        return;
     }
 }
