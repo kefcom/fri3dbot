@@ -114,28 +114,28 @@ EditorBuildSettings:
     path: Assets/scenes/ledFace/gaming/ledFace_Game09.unity
     guid: b25ecf4379e9d2f42bf47715f4b26908
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot00.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot00.unity
     guid: 5a5a0825e49cf4f4db84496fda11055d
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot01.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot01.unity
     guid: 840dd841497fa2349bb1493171afe789
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot02.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot02.unity
     guid: 1090fc2b2aa61c14fb7f79b737dc344a
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot03.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot03.unity
     guid: a4898f435ec5f6641994ce7328ff953f
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot04.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot04.unity
     guid: 889eaa7b3690d7c4db16c165328915c3
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot05.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot05.unity
     guid: 3cbe86e8a7dc06b46803e99fc862e4a7
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot06.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot06.unity
     guid: 40b95e02c4b0c96438f004bc87cb5b82
   - enabled: 1
-    path: Assets/scenes/ledFace/robot/ledFace_robot07.unity
+    path: Assets/scenes/ledFace/robot/ledFace_Robot07.unity
     guid: 24196200c74bde74eaf4581941159353
   - enabled: 0
     path: 
@@ -389,3 +389,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/transitions/_transitionClear.unity
     guid: 7c6f5414edafe974a9f4e553e01ad304
+  - enabled: 1
+    path: Assets/scenes/eeve/party/eeve-party.unity
+    guid: 5911e506dda12644682bbee6e48946c5
+  - enabled: 1
+    path: Assets/scenes/foxkeh/party/foxkeh-party.unity
+    guid: b534f009e4ab7e3408ff175a41412991
+  - enabled: 1
+    path: Assets/scenes/bend-r/party/bend-r-party.unity
+    guid: 33dcee1b0bcd6f84da00ac199b46546a

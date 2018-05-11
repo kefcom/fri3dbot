@@ -41,7 +41,7 @@ public class eeveScript : MonoBehaviour {
             }
             else
             {
-                moodID = 6; // change to max emotions
+                moodID = 8; // change to max emotions
             }
             newMoodID = moodID;
             changeMood();
@@ -49,7 +49,7 @@ public class eeveScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 6) // change to max emotions
+            if (moodID < 8) // change to max emotions
             {
                 moodID++;
             }
@@ -66,7 +66,7 @@ public class eeveScript : MonoBehaviour {
     void determineMood()
     {
 
-        newMoodID = UnityEngine.Random.Range(0, 7); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, 8); // choose next mood between x (inclusive) and x (exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
@@ -122,6 +122,24 @@ public class eeveScript : MonoBehaviour {
                     moodTime = UnityEngine.Random.Range(2, 6);
                     //beter not to show errors too long, they so sad :(
                     SceneManager.LoadScene("eeve-error");
+                    break;
+                case 7:
+                    //eeve party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("eeve-party");
+                    }
                     break;
 
                 default:
