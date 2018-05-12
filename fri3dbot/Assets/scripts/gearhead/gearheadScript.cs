@@ -5,6 +5,7 @@ using System;
 public class gearheadScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 6;
 
 
     // Use this for initialization
@@ -41,7 +42,7 @@ public class gearheadScript : MonoBehaviour {
             }
             else
             {
-                moodID = 4; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -49,7 +50,7 @@ public class gearheadScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 4) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -64,7 +65,7 @@ public class gearheadScript : MonoBehaviour {
 
     void determineMood()
     {      
-        newMoodID = UnityEngine.Random.Range(0, 5); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between x (inclusive) and x (exclusive)
         if(newMoodID == moodID)
         {
             determineMood();
@@ -107,6 +108,24 @@ public class gearheadScript : MonoBehaviour {
                 case 4:
                     //fri3d
                     SceneManager.LoadScene("gearHead_fri3d");
+                    break;
+                case 5:
+                    //gearhead party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("gearhead-party");
+                    }
                     break;
 
                 default:

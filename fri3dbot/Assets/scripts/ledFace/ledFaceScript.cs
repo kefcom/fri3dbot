@@ -6,6 +6,7 @@ using System;
 public class ledFaceScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 14;
 
 
     // Use this for initialization
@@ -44,14 +45,14 @@ public class ledFaceScript : MonoBehaviour {
             }
             else
             {
-                moodID = 14; // change to max emotions
+                moodID = maxEmotions;
             }
             changeMood();
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 14) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -66,7 +67,7 @@ public class ledFaceScript : MonoBehaviour {
     public void determineMood()
     {
         //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "determineMood triggered");
-        newMoodID = UnityEngine.Random.Range(0, 14); // choose next mood between 0(inclusive) and 13(exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between 0(inclusive) and 13(exclusive)
         if (newMoodID == moodID) // make sure same mood is never selected twice in a row.
         {
             //Debug.Log(DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "> " + "same mood as last time... trying again...");

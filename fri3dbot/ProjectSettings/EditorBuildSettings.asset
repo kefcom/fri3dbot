@@ -398,3 +398,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/bend-r/party/bend-r-party.unity
     guid: 33dcee1b0bcd6f84da00ac199b46546a
+  - enabled: 1
+    path: Assets/scenes/gearhead/party/gearHead-party.unity
+    guid: 01b4e108cd2b71a4b9aea0b1cf2d051f
+  - enabled: 1
+    path: Assets/scenes/roboFace/party/roboFace-party.unity
+    guid: 1b92fc09b37ab5f49844516f58a25445

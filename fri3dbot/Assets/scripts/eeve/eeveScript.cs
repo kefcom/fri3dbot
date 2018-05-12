@@ -6,6 +6,7 @@ using System;
 public class eeveScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 8;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class eeveScript : MonoBehaviour {
             }
             else
             {
-                moodID = 8; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -49,7 +50,7 @@ public class eeveScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 8) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -66,7 +67,7 @@ public class eeveScript : MonoBehaviour {
     void determineMood()
     {
 
-        newMoodID = UnityEngine.Random.Range(0, 8); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between x (inclusive) and x (exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
