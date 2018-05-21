@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.scripts;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -25,13 +26,11 @@ public class _webPoller : MonoBehaviour
 
     private IEnumerator PollHndler()
     {
-        using (var request = UnityWebRequest.Get("http://localhost:53549/api/scenes/random"))
+        using (var request = UnityWebRequest.Get("http://localhost:53549/api/scenes/newest"))
         {
-            Debug.Log("Received code" + request.responseCode);
-            var scene = request.downloadHandler.text;
-            _lastUsedScenes.Add(scene);
             yield return request.SendWebRequest();
 
+            Debug.Log("HTTP Response" + request.responseCode);
             if (request.isNetworkError || request.isHttpError)
             {
                 Debug.Log(request.error);
@@ -42,8 +41,16 @@ public class _webPoller : MonoBehaviour
                 if (!string.IsNullOrEmpty(response))
                 {
                     var faceCode = int.Parse(response);
-                    GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(faceCode);
-                    _lastUsedScenes.Add(response);
+                    if (Shared.Faces.ContainsKey(faceCode))
+                    {
+                        GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(faceCode);
+                        _lastUsedScenes.Add(response);
+                    }
+                    else
+                    { 
+                        // -1 means no new Face to be loaded, just continue
+                        Debug.Log(string.Format("No new face to be loaded. Received {0}", faceCode));
+                    }
                 }
             }
         }
