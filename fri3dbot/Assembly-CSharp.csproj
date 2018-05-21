@@ -83,6 +83,7 @@
     <Compile Include="Assets\scripts\ledFace\ledFaceScript.cs" />
     <Compile Include="Assets\scripts\ledFace\ledFaceSleeping.cs" />
     <Compile Include="Assets\scripts\roboFace\roboFaceScript.cs" />
+    <Compile Include="Assets\scripts\Shared.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>C:/Users/Berend Wouters/source/repos/Fri3dBot/fri3dbot/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>

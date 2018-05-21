@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using Assets.scripts;
 
 
 public class _sceneDirector : MonoBehaviour {
@@ -115,46 +116,20 @@ public class _sceneDirector : MonoBehaviour {
 
     }
 
+    
+
+
     public void setFace(int faceNumber)
     {
-        switch (faceNumber)
+        if (!Shared.Faces.ContainsKey(faceNumber))
         {
-            case 0:
-                // led matrix face
-                nextSceneName = "ledFace_Off";
-                currentScenenumber = 0;
-                break;
-            case 1:
-                //bend-r rodruigez
-                nextSceneName = "bend-r-init";
-                currentScenenumber = 1;
-                break;
-            case 2:
-                //eeve
-                nextSceneName = "eeve-init";
-                currentScenenumber = 2;
-                break;
-            case 3:
-                //gearhead
-                nextSceneName = "gearHead_init";
-                currentScenenumber = 3;
-                break;
-            case 4:
-                //roboface
-                nextSceneName = "roboFace-init";
-                currentScenenumber = 4;
-                break;
-            case 5:
-                //foxkeh
-                nextSceneName = "foxkeh-Init";
-                currentScenenumber = 5;
-                break;
-            default:
-                // led matrix face
-                nextSceneName = "ledFace_Off";
-                currentScenenumber = 5;
-                break;
+            nextSceneName = Shared.Faces[0];
+            currentScenenumber = 0;
         }
-        return;
+        else
+        {
+            nextSceneName = Shared.Faces[faceNumber];
+            currentScenenumber = faceNumber;
+        }
     }
 }
