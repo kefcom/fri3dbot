@@ -10,7 +10,7 @@ namespace Assets.scripts
             {1,  "bend-r-init"},
             {2,  "eeve-init"},
             {3,  "gearHead_init"},
-            {4,  "roboFace"},
+            {4,  "roboFace-init"},
             {5,  "foxkeh-Init"}
         };
     }
