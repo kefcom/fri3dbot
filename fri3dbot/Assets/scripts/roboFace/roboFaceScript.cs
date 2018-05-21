@@ -6,6 +6,7 @@ public class roboFaceScript : MonoBehaviour
 {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 5;
 
 
     // Use this for initialization
@@ -45,7 +46,7 @@ public class roboFaceScript : MonoBehaviour
             }
             else
             {
-                moodID = 4; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -53,7 +54,7 @@ public class roboFaceScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 4) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -68,7 +69,7 @@ public class roboFaceScript : MonoBehaviour
 
     void determineMood()
     {      
-        newMoodID = UnityEngine.Random.Range(0, 4); // choose next mood between 0(inclusive) and 13(exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between 0(inclusive) and 13(exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
@@ -84,7 +85,7 @@ public class roboFaceScript : MonoBehaviour
         }
         else
         {
-            int moodTime = UnityEngine.Random.Range(2, 60); // time between moods (applied below, so certain animations can override ifneedbe)
+            int moodTime = UnityEngine.Random.Range(2, 30); // time between moods (applied below, so certain animations can override ifneedbe)
             switch (moodID)
             {
                 case 0:
@@ -102,6 +103,24 @@ public class roboFaceScript : MonoBehaviour
                 case 3:
                     //fri3d
                     SceneManager.LoadScene("roboFace-fri3d");
+                    break;
+                case 4:
+                    //roboface party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("roboFace-party");
+                    }
                     break;
                 default:
                     //init

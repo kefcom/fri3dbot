@@ -18,14 +18,8 @@ public class _webPoller : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "_startup")
         {
             DontDestroyOnLoad(this);
+            GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(0);
         }
-
-        StartCoroutine("PollHndler");
-    }
-
-// Update is called once per frame
-    private void Update()
-    {
     }
 
     private IEnumerator PollHndler()

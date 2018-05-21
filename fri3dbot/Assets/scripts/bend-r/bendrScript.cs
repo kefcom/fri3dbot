@@ -6,6 +6,7 @@ using System;
 public class bendrScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 10;
 
 
     // Use this for initialization
@@ -42,7 +43,7 @@ public class bendrScript : MonoBehaviour {
             }
             else
             {
-                moodID = 8; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -50,7 +51,7 @@ public class bendrScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 8) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -65,7 +66,7 @@ public class bendrScript : MonoBehaviour {
 
     void determineMood()
     {      
-        newMoodID = UnityEngine.Random.Range(0, 9); // choose next mood between 0(inclusive) and 9 exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between 0(inclusive) and 9 exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
@@ -78,7 +79,7 @@ public class bendrScript : MonoBehaviour {
         if(newMoodID != moodID)
         {
             // scene is not ready for change yet... (animation not done yet)
-            if(moodID == 5)
+            if(moodID == 5) //unless it's mood 5(coding) which doesn't have a anim_begin and anim_end trigger (no animations, only video)
             {
                 moodID = newMoodID;
                 changeMood();
@@ -87,7 +88,7 @@ public class bendrScript : MonoBehaviour {
         else
         {
             // change the scene
-            int moodTime = UnityEngine.Random.Range(20, 120); // time between moods (applied below, so certain animations can override ifneedbe)
+            int moodTime = UnityEngine.Random.Range(5, 30); // time between moods (applied below, so certain animations can override ifneedbe)
             switch (moodID)
             {
                 case 0:
@@ -130,6 +131,24 @@ public class bendrScript : MonoBehaviour {
                 case 8:
                     //looking (animation)
                     SceneManager.LoadScene("bend-rLooking");
+                    break;
+                case 9:
+                    //bend-r party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("bend-r-party");
+                    }
                     break;
                 default:
                     // Happy

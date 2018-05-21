@@ -6,6 +6,7 @@ using System;
 public class foxkehScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 7;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class foxkehScript : MonoBehaviour {
             }
             else
             {
-                moodID = 6; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -49,7 +50,7 @@ public class foxkehScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 6) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -66,7 +67,7 @@ public class foxkehScript : MonoBehaviour {
     void determineMood()
     {
 
-        newMoodID = UnityEngine.Random.Range(0, 6); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between x (inclusive) and x (exclusive)
         if (newMoodID == moodID)
         {
             determineMood();
@@ -83,7 +84,7 @@ public class foxkehScript : MonoBehaviour {
         }
         else
         {
-            int moodTime = UnityEngine.Random.Range(5, 60); // time between moods (applied below, so certain animations can override ifneedbe)
+            int moodTime = UnityEngine.Random.Range(5, 30); // time between moods (applied below, so certain animations can override ifneedbe)
             switch (moodID)
             {
                 case 0:
@@ -109,6 +110,24 @@ public class foxkehScript : MonoBehaviour {
                 case 5:
                     //coon
                     SceneManager.LoadScene("foxkeh-Coon");
+                    break;
+                case 6:
+                    //foxkeh party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("foxkeh-party");
+                    }
                     break;
                 default:
                     //idle
