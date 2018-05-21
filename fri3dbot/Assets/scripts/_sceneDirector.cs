@@ -93,7 +93,7 @@ public class _sceneDirector : MonoBehaviour {
         Debug.Log("New scene in " + newSceneTime.ToString() + " Seconds (= " + newTime.ToString()  + " )");
 
         //load new scene in <x> time
-        Invoke("loadRandomScene", newSceneTime);
+        Invoke("loadRandomFace", newSceneTime);
     }
 
 
