@@ -9,15 +9,17 @@ import { FACES } from '../faces';
 })
 
 export class FacesComponent implements OnInit {
-  face: Face = {
-    id: 1,
-    name: 'Windstorm'
-  };
+ 
   faces = FACES;
-
+ 
+  selectedface: Face;
+  
   constructor() { }
-
+ 
   ngOnInit() {
   }
-
+ 
+  onSelect(face: Face): void {
+    this.selectedface = face;
+  }
 }

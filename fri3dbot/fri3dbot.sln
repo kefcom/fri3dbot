@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fri3dbot", "Assembly-CSharp.csproj", "{263DE036-228F-A611-C0A2-828F80307DDB}"
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{263DE036-228F-A611-C0A2-828F80307DDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "..\Server\Server.csproj", "{82707DF2-96F9-4786-89C8-5D8ADBFE464F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "..\Server\Server.csproj", "{82707DF2-96F9-4786-89C8-5D8ADBFE464F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FFD101D-2A6E-46F5-A12E-B3E4BAE9FA16}
 	EndGlobalSection
 EndGlobal

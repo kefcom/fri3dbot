@@ -1,6 +1,9 @@
 <h2>My faces</h2>
 <ul class="faces">
-  <li *ngFor="let face of faces">
-      <span class="badge">{{face.id}}</span> {{face.name}}
-    </li>
+  <li *ngFor="let face of faces"
+    [class.selected]="face === selectedface"
+    (click)="onSelect(face)">
+    <span class="badge">{{face.id}}</span> {{face.name}}
+  </li>
 </ul>
+
