@@ -26,7 +26,7 @@ public class _webPoller : MonoBehaviour
 
     private IEnumerator PollHndler()
     {
-        using (var request = UnityWebRequest.Get("http://localhost:53549/api/scenes/newest"))
+        using (var request = UnityWebRequest.Get("http://localhost:53549/api/faces/newest"))
         {
             yield return request.SendWebRequest();
 
