@@ -6,7 +6,7 @@ using System;
 public class bendrScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
-    public int maxEmotions = 10;
+    public int maxEmotions = 11;
 
 
     // Use this for initialization
@@ -149,6 +149,11 @@ public class bendrScript : MonoBehaviour {
                         // it's between 22:00 and 6:00, so Party on!
                         SceneManager.LoadScene("bend-r-party");
                     }
+                    break;
+                case 10:
+                    //fri3dleds (runonce)
+                    moodTime = 5; // only allow it to run once
+                    SceneManager.LoadScene("bend-r-fri3dleds");
                     break;
                 default:
                     // Happy
