@@ -407,4 +407,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/bend-r/fri3dleds/bend-r-fri3dleds.unity
     guid: 606e6f529384eed4d86ba81ee1a17f60
+  - enabled: 1
+    path: Assets/scenes/roboFace/talking/roboFace-talking.unity
+    guid: 68e6ad0799b538f4c86ce29534586f46
+  - enabled: 1
+    path: Assets/scenes/gearhead/high/gearHead_high.unity
+    guid: 0caf1a16fa1e495438ea1b665c3d82be
   m_configObjects: {}
