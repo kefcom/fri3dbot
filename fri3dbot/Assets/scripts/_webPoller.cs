@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.scripts;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,6 @@ public class _webPoller : MonoBehaviour
         {
             DontDestroyOnLoad(this);
             StartCoroutine("PollHndler");
-            GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(0);
         }
     }
 
@@ -38,25 +38,31 @@ public class _webPoller : MonoBehaviour
             else
             {
                 var response = request.downloadHandler.text;
-                if (!string.IsNullOrEmpty(response))
+                var requestDTO = JsonConvert.DeserializeObject<Shared.RequestDTO>(response);
+                if (requestDTO != null)
                 {
-                    var faceCode = int.Parse(response);
-                    if (Shared.Faces.ContainsKey(faceCode))
+                    if (Shared.Faces.ContainsKey(requestDTO.RequestedFaceId))
                     {
-                        GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(faceCode);
-                        _lastUsedScenes.Add(response);
+                        var overlayScript = GameObject.Find("overlayScript").GetComponent<_OverlayScript>();
+                        var lastCode = overlayScript.lastSecurityCode;
+                        var currentCode = overlayScript.currentSecurityCode;
+                        if (requestDTO.AuthorizationCode == currentCode || requestDTO.AuthorizationCode == lastCode)
+                        {
+                            overlayScript.generateSecurityCode();
+                            GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(requestDTO.RequestedFaceId);
+                            _lastUsedScenes.Add(response);
+                        }
                     }
                     else
                     { 
                         // -1 means no new Face to be loaded, just continue
-                        Debug.Log(string.Format("No new face to be loaded. Received {0}", faceCode));
+                        Debug.Log(string.Format("No new face to be loaded. Received {0}", requestDTO.RequestedFaceId));
                     }
                 }
             }
         }
 
         Debug.Log("webpoller active");
-
 
         yield return new WaitForSeconds(Timeout);
         StartCoroutine("PollHndler");

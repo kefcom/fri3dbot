@@ -32,7 +32,7 @@ namespace Server.Controllers
 
         [HttpGet]
         [Route("newest")]
-        public async Task<int> GetNewestFace()
+        public async Task<Shared.RequestDTO> GetNewestFace()
         {
             var newestItems = await _context.FaceRequests.Where(x => !x.IsCompleted).ToListAsync();
             if (newestItems.Any())
@@ -40,10 +40,15 @@ namespace Server.Controllers
                 var newestItem = newestItems.First();
                 newestItem.IsCompleted = true;
                 await _context.SaveChangesAsync();
-                return newestItem.RequestedFaceId;
+                var p = new Shared.RequestDTO()
+                {
+                    RequestedFaceId = newestItem.RequestedFaceId,
+                    AuthorizationCode = newestItem.AuthorizationCode
+                };
+                return p;
             }
 
-            return -1;
+            return null;
         }
 
         [HttpPost]

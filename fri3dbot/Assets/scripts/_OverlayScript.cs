@@ -93,15 +93,22 @@ public class _OverlayScript : MonoBehaviour
 
     public void generateSecurityCode()
     {
-        //move current code to lastcode
-        lastSecurityCode = currentSecurityCode;
-        //generate new code
-        currentSecurityCode = Random.Range(100, 999);
-        //updateOverlay
-        thisCodeField = GameObject.Find("topText").gameObject;
-        thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString() ;
-        //run this function again in <x> time
-        Invoke("generateSecurityCode", securityCodeTime);
+        if (SceneManager.GetActiveScene().name.Substring(0, 6) != "_trans")
+        {
+            //move current code to lastcode
+            lastSecurityCode = currentSecurityCode;
+            //generate new code
+            currentSecurityCode = Random.Range(100, 999);
+            //updateOverlay
+            thisCodeField = GameObject.Find("topText").gameObject;
+            thisCodeField.GetComponent<Text>().text = currentSecurityCode.ToString();
+            //run this function again in <x> time
+            Invoke("generateSecurityCode", securityCodeTime);
+        }
+        else
+        {
+            Invoke("generateSecurityCode", 1f);
+        }
     }
 
     public void setOverlayText(string text)

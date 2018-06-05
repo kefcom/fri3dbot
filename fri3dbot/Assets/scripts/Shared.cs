@@ -13,5 +13,11 @@ namespace Assets.scripts
             {4,  "roboFace-init"},
             {5,  "foxkeh-Init"}
         };
+
+        public class RequestDTO
+        {
+            public int RequestedFaceId { get; set; }
+            public int AuthorizationCode { get;set; }
+        }
     }
 }
