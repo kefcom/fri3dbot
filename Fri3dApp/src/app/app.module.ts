@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FacesComponent } from './faces/faces.component';
 import { FaceService } from './faces/faces.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule, MatFormFieldModule } from '@angular/material';
+import { MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { AuthorizationDialog } from './faces/authorizationcode/dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [FaceService],
   bootstrap: [AppComponent],

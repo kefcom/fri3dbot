@@ -24,6 +24,7 @@ export class FacesComponent implements OnInit {
   ngOnInit() {
   }
   openDialog(face:Face): void {
+    console.log(face);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -34,14 +35,13 @@ export class FacesComponent implements OnInit {
 
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      let faceDTO = new FaceDTO(face.id, this.authorizationCode);
-    this._faceService.requestFace(faceDTO).subscribe(
+      let faceDTO = new FaceDTO(face.id, result.code);
+      this._faceService.requestFace(faceDTO).subscribe(
              data => {
                return true;
              },
              error => {
-               console.error("Error saving food!");
+               console.error("Error requesting face!");
                return Observable.throw(error);
              });
     });
