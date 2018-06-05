@@ -6,7 +6,7 @@ public class roboFaceScript : MonoBehaviour
 {
     private int moodID;
     private int newMoodID;
-    public int maxEmotions = 5;
+    public int maxEmotions = 7;
 
 
     // Use this for initialization
@@ -122,11 +122,21 @@ public class roboFaceScript : MonoBehaviour
                         SceneManager.LoadScene("roboFace-party");
                     }
                     break;
+                case 5:
+                    //psyche
+                    moodTime = 10; // simple animation, not too long
+                    SceneManager.LoadScene("roboFace-psyche");
+                    break;
+                case 6:
+                    //talking
+                    SceneManager.LoadScene("roboFace-talking");
+                    break;
                 default:
                     //init
                     SceneManager.LoadScene("roboFace-init");
                     break;
             }
+            Debug.Log("changed scene for " + moodTime.ToString() + " seconds");
             //apply mood time
             Invoke("determineMood", moodTime);
         }

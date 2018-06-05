@@ -5,7 +5,7 @@ using System;
 public class gearheadScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
-    public int maxEmotions = 6;
+    public int maxEmotions = 7;
 
 
     // Use this for initialization
@@ -127,7 +127,10 @@ public class gearheadScript : MonoBehaviour {
                         SceneManager.LoadScene("gearhead-party");
                     }
                     break;
-
+                case 6:
+                    //high
+                    SceneManager.LoadScene("gearHead_high");
+                    break;
                 default:
                     // idle
                     SceneManager.LoadScene("gearHead_idle");
