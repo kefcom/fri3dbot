@@ -1,21 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using Assets.scripts;
 using Newtonsoft.Json;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class _webPoller : MonoBehaviour
 {
-    private readonly List<string> _lastUsedScenes = new List<string>();
     // Use this for initialization
 
     public float Timeout = 5f;
+    private PollerConfiguration _config;
 
     // Use this for initialization
     private void Start()
     {
+        Debug.Log("Loading configuration");
+        _config = LoadConfiguration();
         Debug.Log("Start");
         if (SceneManager.GetActiveScene().name == "_startup")
         {
@@ -24,9 +32,27 @@ public class _webPoller : MonoBehaviour
         }
     }
 
+    private PollerConfiguration LoadConfiguration()
+    {
+        PollerConfiguration config;
+        try
+        {
+            using (var reader = new StreamReader("Assets\\scripts\\confguration\\config.json"))
+            {
+                var json = reader.ReadToEnd();
+                config = JsonConvert.DeserializeObject<PollerConfiguration>(json);
+            }
+        }
+        catch (Exception ex)
+        {
+            config = PollerConfiguration.GetDefaultConfiguration();
+        }
+        return config;
+    }
+
     private IEnumerator PollHndler()
     {
-        using (var request = UnityWebRequest.Get("http://localhost:5000/api/faces/newest"))
+        using (var request = UnityWebRequest.Get(string.Format("{0}/api/faces/newest", _config.Url)))
         {
             yield return request.SendWebRequest();
 
@@ -50,7 +76,6 @@ public class _webPoller : MonoBehaviour
                         {
                             overlayScript.generateSecurityCode();
                             GameObject.Find("sceneDirector").GetComponent<_sceneDirector>().loadFace(requestDTO.RequestedFaceId);
-                            _lastUsedScenes.Add(response);
                         }
                     }
                     else
@@ -66,5 +91,18 @@ public class _webPoller : MonoBehaviour
 
         yield return new WaitForSeconds(Timeout);
         StartCoroutine("PollHndler");
+    }
+}
+
+internal class PollerConfiguration
+{
+    public string Url { get; set; }
+
+    public static PollerConfiguration GetDefaultConfiguration()
+    {
+        return new PollerConfiguration()
+        {
+            Url = "http://localhost:5000"
+        };
     }
 }
