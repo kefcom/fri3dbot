@@ -15,6 +15,6 @@ export class FaceService {
     requestFace(face) {
         let body = JSON.stringify(face);
         console.log(body);
-        return  this.http.post('http://localhost:53550/api/faces/add', body, httpOptions);
+        return  this.http.post('http://192.168.10.112:5000/api/faces/add', body, httpOptions);
     }
 }

@@ -1,6 +1,7 @@
 export class Face {
     id: number;
     name: string;
+    humanName: string;
   }
 
 export class FaceDTO{

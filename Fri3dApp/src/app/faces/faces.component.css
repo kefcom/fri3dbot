@@ -7,23 +7,23 @@
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
   }
-  .faces li {
+  .faces mat-card {
     cursor: pointer;
     position: relative;
     left: 0;
-    background-color: #EEE;
+    background-color: rgb(91, 197, 127);
+    text-align: center;
     margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
+    padding: 1em 0;
     border-radius: 4px;
+    color: #444;
   }
-  .faces li.selected:hover {
+  .faces mat-card.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
   }
-  .faces li:hover {
+  .faces mat-card:hover {
     color: #607D8B;
     background-color: #DDD;
     left: .1em;
