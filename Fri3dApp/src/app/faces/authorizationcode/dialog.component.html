@@ -1,15 +1,18 @@
-<h2 mat-dialog-title>{{name}}</h2>
+<div class="content">
+    <h2 mat-dialog-title>{{humanName}}</h2>
 
-<mat-dialog-content [formGroup]="form">
-    <mat-form-field>
-        <input matInput
-               placeholder="Code"
-               formControlName="code">
-    </mat-form-field>
-    
-</mat-dialog-content>
+    <mat-dialog-content [formGroup]="form">
+        <mat-form-field>
+            <input
+                matInput
+                placeholder="Code"
+                formControlName="code">
+        </mat-form-field>
+        
+    </mat-dialog-content>
 
-<mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="save()">Enter</button>
-</mat-dialog-actions>
+    <mat-dialog-actions>
+        <button class="mat-raised-button"(click)="close()">Close</button>
+        <button class="mat-raised-button mat-primary"(click)="save()">Enter</button>
+    </mat-dialog-actions>
+</div>

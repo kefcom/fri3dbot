@@ -13,8 +13,9 @@ export class FaceService {
     
     // Uses http.get() to load data from a single API endpoint
     requestFace(face) {
+        let ip = window.location.hostname;
+        console.log(ip);
         let body = JSON.stringify(face);
-        console.log(body);
-        return  this.http.post('http://192.168.10.112:5000/api/faces/add', body, httpOptions);
+        return  this.http.post('http://'+ip+':5000/api/faces/add', body, httpOptions);
     }
 }

@@ -9,28 +9,28 @@ import { Face } from '../../face';
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.css']
 })
 export class AuthorizationDialog  implements OnInit {
 
     form: FormGroup;
     name:string;
-
+    humanName:string;
     constructor(
-      private fb: FormBuilder,
-      private dialogRef: MatDialogRef<AuthorizationDialog>,
-      @Inject(MAT_DIALOG_DATA) {name}:Face ) {
+        private fb: FormBuilder,
+        private dialogRef: MatDialogRef<AuthorizationDialog>,
+        @Inject(MAT_DIALOG_DATA) {name, humanName}:Face ) {
 
-      this.name = name;
+        this.name = name;
+        this.humanName = humanName;
 
+        this.form = fb.group({
+            code: ['', Validators.required]
+        });
+    }
 
-      this.form = fb.group({
-          code: ['', Validators.required]
-      });
-
-  }
-  ngOnInit() {
-
-  }
+    ngOnInit() {
+    }
 
     save() {
         this.dialogRef.close(this.form.value);

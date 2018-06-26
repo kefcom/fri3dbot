@@ -37,7 +37,8 @@ public class _webPoller : MonoBehaviour
         PollerConfiguration config;
         try
         {
-            using (var reader = new StreamReader("Assets\\scripts\\confguration\\config.json"))
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "\\config.json");
+            using (var reader = new StreamReader(filePath))
             {
                 var json = reader.ReadToEnd();
                 config = JsonConvert.DeserializeObject<PollerConfiguration>(json);
@@ -96,7 +97,7 @@ public class _webPoller : MonoBehaviour
 
 internal class PollerConfiguration
 {
-    public string Url { get; set; }
+    public string Url { get; private set; }
 
     public static PollerConfiguration GetDefaultConfiguration()
     {

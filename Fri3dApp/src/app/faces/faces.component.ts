@@ -24,12 +24,15 @@ export class FacesComponent implements OnInit {
   ngOnInit() {
   }
   openDialog(face:Face): void {
-    console.log(face);
+    // console.log(face);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.closeOnNavigation = true;
     dialogConfig.data = {
-      name: face.name
+      name: face.name,
+      humanName: face.humanName
   };
     let dialogRef = this.dialog.open(AuthorizationDialog,dialogConfig);
 

@@ -7,17 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Data;
 using Server.Models;
+using Server.Services;
 
 namespace Server.Controllers
 {
     [Route("api/faces")]
     public class FaceController : Controller
     {
+        private readonly IRequestService _requestService;
         private readonly IReadOnlyList<int> _newestList  = new List<int>();
         private readonly FaceRequestContext _context;
 
-        public FaceController()
+        public FaceController(IRequestService requestService)
         {
+            _requestService = requestService;
             _context = new FaceRequestContext();
         }
 
@@ -34,20 +37,16 @@ namespace Server.Controllers
         [Route("newest")]
         public async Task<Shared.RequestDTO> GetNewestFace()
         {
-            var newestItems = await _context.FaceRequests.Where(x => !x.IsCompleted).ToListAsync();
-            if (newestItems.Any())
+            var request = await _requestService.GetLatestRequestAsync();
+            if (request != null)
             {
-                var newestItem = newestItems.First();
-                newestItem.IsCompleted = true;
-                await _context.SaveChangesAsync();
                 var p = new Shared.RequestDTO()
                 {
-                    RequestedFaceId = newestItem.RequestedFaceId,
-                    AuthorizationCode = newestItem.AuthorizationCode
+                    RequestedFaceId = request.RequestedFaceId,
+                    AuthorizationCode = request.AuthorizationCode
                 };
                 return p;
             }
-
             return null;
         }
 
@@ -61,8 +60,7 @@ namespace Server.Controllers
                 AuthorizationCode = faceRequestDTO.AuthorizationCode,
                 CreationDateTime = DateTime.UtcNow
             };
-            _context.FaceRequests.Add(faceRequest);
-            await _context.SaveChangesAsync();
+            await _requestService.AddAsync(faceRequest);
         }
     }
 
