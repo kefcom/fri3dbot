@@ -6,7 +6,7 @@ using System;
 public class eeveScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
-    public int maxEmotions = 8;
+    public int maxEmotions = 9;
 
     void Start()
     {
@@ -141,6 +141,10 @@ public class eeveScript : MonoBehaviour {
                         // it's between 22:00 and 6:00, so Party on!
                         SceneManager.LoadScene("eeve-party");
                     }
+                    break;
+                case 8:
+                    //amazed
+                    SceneManager.LoadScene("eeve-amazed");
                     break;
 
                 default:
