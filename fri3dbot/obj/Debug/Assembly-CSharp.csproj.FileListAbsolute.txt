@@ -206,3 +206,8 @@ C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp
 C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.dll
 C:\Users\Berend Wouters\source\repos\Fri3dBot\fri3dbot\obj\Debug\Assembly-CSharp.pdb
+C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\Temp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\Temp\bin\Debug\UnityEngine.Advertisements.dll
+C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\Temp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\kefcom\Desktop\fri3dbot\fri3dbot\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

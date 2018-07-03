@@ -413,4 +413,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/gearhead/high/gearHead_high.unity
     guid: 0caf1a16fa1e495438ea1b665c3d82be
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/scenes/transitions/_transition_bsod.unity
+    guid: ba0bac1fcc23274499d6e7d3c680712c
+  - enabled: 1
+    path: Assets/scenes/eeve/amazed/eeve-amazed.unity
+    guid: c6b247596ddc0494082c2a2600468eb5

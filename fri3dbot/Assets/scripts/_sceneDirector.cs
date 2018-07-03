@@ -23,7 +23,7 @@ public class _sceneDirector : MonoBehaviour {
 
     void showTransition()
     {
-        int transitionNumber = UnityEngine.Random.Range(0, 6);
+        int transitionNumber = UnityEngine.Random.Range(0, 7);
         float waitingTime = UnityEngine.Random.Range(2f, 5f);
         switch (transitionNumber)
         {
@@ -45,6 +45,9 @@ public class _sceneDirector : MonoBehaviour {
                 break;
             case 5:
                 SceneManager.LoadScene("_transition_Fri3dlogo");
+                break;
+            case 6:
+                SceneManager.LoadScene("_transition_bsod");
                 break;
 
             default:
