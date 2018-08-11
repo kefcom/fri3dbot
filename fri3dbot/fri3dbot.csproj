@@ -318,6 +318,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\SerialPortManager.cs" />
     <Compile Include="Assets\scripts\_animationScript.cs" />
     <Compile Include="Assets\scripts\_OverlayScript.cs" />
     <Compile Include="Assets\scripts\_sceneDirector.cs" />
