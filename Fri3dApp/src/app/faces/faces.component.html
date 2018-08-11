@@ -1,0 +1,8 @@
+<ul class="faces">
+  <mat-card *ngFor="let face of faces"
+    [class.selected]="face === selectedface"
+    (click)="onSelect(face)">
+    <mat-card-title>{{face.humanName}}</mat-card-title>
+  </mat-card>
+</ul>
+

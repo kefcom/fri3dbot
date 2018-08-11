@@ -137,33 +137,33 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/ledFace/robot/ledFace_robot07.unity
     guid: 24196200c74bde74eaf4581941159353
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused00.unity
-    guid: 7339752115241914babe6c12b918facb
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused01.unity
-    guid: 54bb801326fed7f4bb86eb032ed34b38
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused02.unity
-    guid: 7a3437668eff5c8429629a9557552996
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused03.unity
-    guid: 0431614d49ce30e46af61bb328f4611f
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused04.unity
-    guid: 153992e4cb810ea41b085c5d3e415bf9
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused05.unity
-    guid: c3a66a41481361a4ebdb870803442924
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused06.unity
-    guid: 6d59658299a667247b406715d72bd474
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused07.unity
-    guid: b14d72758736a4741ab7ecd3cef50d4f
-  - enabled: 1
-    path: Assets/scenes/ledFace/confused/ledFace_Confused08.unity
-    guid: ac86eb9ee1722ca45acd6a67a2981ff4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/scenes/ledFace/laughing/ledFace_Laughing00.unity
     guid: d43dfc0313107d54eb94e08dbdc48085
@@ -345,7 +345,7 @@ EditorBuildSettings:
     path: Assets/scenes/ledFace/init/ledFace_Off.unity
     guid: b424ac2bc5fb15044a0d09018c3388fa
   - enabled: 1
-    path: Assets/scenes/roboFace/init/roboFace-init.unity
+    path: Assets/scenes/roboFace/psyche/roboFace-psyche.unity
     guid: dfecec4d3c666c2478e754b2cce74414
   - enabled: 1
     path: Assets/scenes/roboFace/loading/roboFace-loading.unity
@@ -353,3 +353,69 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/roboFace/looking/roboFace-looking.unity
     guid: 7b2fb4be49e972b4885f62c479269d3b
+  - enabled: 1
+    path: Assets/scenes/roboFace/dj/roboFace-dj.unity
+    guid: d71f25f87a8440b488cf333464395a9a
+  - enabled: 1
+    path: Assets/scenes/roboFace/fri3d/roboFace-fri3d.unity
+    guid: a0569bcf1e246dc4f9d61a28e1d9cb75
+  - enabled: 1
+    path: Assets/scenes/foxkeh/init/foxkeh-Init.unity
+    guid: 00b95cadb503a344099d87ce489f90c9
+  - enabled: 1
+    path: Assets/scenes/foxkeh/looking/foxkeh-Looking.unity
+    guid: d43214401fcbd204f9f39f99c760902a
+  - enabled: 1
+    path: Assets/scenes/foxkeh/idle/foxkeh-Idle.unity
+    guid: 22089896f7da85c48a0888b9fbe146aa
+  - enabled: 1
+    path: Assets/scenes/foxkeh/fri3d/foxkeh-Fri3d.unity
+    guid: 364f88462387ed24c8679f8a78eff969
+  - enabled: 1
+    path: Assets/scenes/foxkeh/tilt/foxkeh-Tilt.unity
+    guid: 6ea8bcd9f2863b3479bc480ce0df5309
+  - enabled: 1
+    path: Assets/scenes/foxkeh/badge/foxkeh-Badge.unity
+    guid: 43a3f7513868b6c48881ce1ccc52e200
+  - enabled: 1
+    path: Assets/scenes/foxkeh/coon/foxkeh-Coon.unity
+    guid: 82b7141a71e5e684d8ce9911d166b1cf
+  - enabled: 1
+    path: Assets/scenes/transitions/_transition_Fri3dlogo.unity
+    guid: 8a2943c3dada49241bbbf74cd393ad67
+  - enabled: 1
+    path: Assets/scenes/roboFace/init/roboFace-init.unity
+    guid: bbcf636cf17ed7f429100e1bc8a89a97
+  - enabled: 1
+    path: Assets/scenes/transitions/_transitionClear.unity
+    guid: 7c6f5414edafe974a9f4e553e01ad304
+  - enabled: 1
+    path: Assets/scenes/eeve/party/eeve-party.unity
+    guid: 5911e506dda12644682bbee6e48946c5
+  - enabled: 1
+    path: Assets/scenes/foxkeh/party/foxkeh-party.unity
+    guid: b534f009e4ab7e3408ff175a41412991
+  - enabled: 1
+    path: Assets/scenes/bend-r/party/bend-r-party.unity
+    guid: 33dcee1b0bcd6f84da00ac199b46546a
+  - enabled: 1
+    path: Assets/scenes/gearhead/party/gearHead-party.unity
+    guid: 01b4e108cd2b71a4b9aea0b1cf2d051f
+  - enabled: 1
+    path: Assets/scenes/roboFace/party/roboFace-party.unity
+    guid: 1b92fc09b37ab5f49844516f58a25445
+  - enabled: 1
+    path: Assets/scenes/bend-r/fri3dleds/bend-r-fri3dleds.unity
+    guid: 606e6f529384eed4d86ba81ee1a17f60
+  - enabled: 1
+    path: Assets/scenes/roboFace/talking/roboFace-talking.unity
+    guid: 68e6ad0799b538f4c86ce29534586f46
+  - enabled: 1
+    path: Assets/scenes/gearhead/high/gearHead_high.unity
+    guid: 0caf1a16fa1e495438ea1b665c3d82be
+  - enabled: 1
+    path: Assets/scenes/transitions/_transition_bsod.unity
+    guid: ba0bac1fcc23274499d6e7d3c680712c
+  - enabled: 1
+    path: Assets/scenes/eeve/amazed/eeve-amazed.unity
+    guid: c6b247596ddc0494082c2a2600468eb5

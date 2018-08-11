@@ -6,6 +6,7 @@ using System;
 public class eeveScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 9;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class eeveScript : MonoBehaviour {
             }
             else
             {
-                moodID = 6; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -49,7 +50,7 @@ public class eeveScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 6) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -66,7 +67,11 @@ public class eeveScript : MonoBehaviour {
     void determineMood()
     {
 
-        newMoodID = UnityEngine.Random.Range(0, 7); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between x (inclusive) and x (exclusive)
+        if (newMoodID == moodID)
+        {
+            determineMood();
+        }
         changeMood();
     }
 
@@ -105,6 +110,8 @@ public class eeveScript : MonoBehaviour {
                     break;
                 case 4:
                     //glitch
+                    moodTime = UnityEngine.Random.Range(2, 6);
+                    //beter not to show errors too long, they so sad :(
                     SceneManager.LoadScene("eeve-glitch");
                     break;
                 case 5:
@@ -113,7 +120,31 @@ public class eeveScript : MonoBehaviour {
                     break;
                 case 6:
                     //error
+                    moodTime = UnityEngine.Random.Range(2, 6);
+                    //beter not to show errors too long, they so sad :(
                     SceneManager.LoadScene("eeve-error");
+                    break;
+                case 7:
+                    //eeve party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("eeve-party");
+                    }
+                    break;
+                case 8:
+                    //amazed
+                    SceneManager.LoadScene("eeve-amazed");
                     break;
 
                 default:
@@ -121,7 +152,7 @@ public class eeveScript : MonoBehaviour {
                     SceneManager.LoadScene("eeve-idle");
                     break;
             }
-
+            Debug.Log("new mood in: " + moodTime.ToString() + " seconds");
             //apply mood time
             Invoke("determineMood", moodTime);
         }
