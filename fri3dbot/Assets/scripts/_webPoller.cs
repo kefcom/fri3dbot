@@ -24,7 +24,7 @@ public class _webPoller : MonoBehaviour
     {
         Debug.Log("Loading configuration");
         _config = LoadConfiguration();
-        Debug.Log("Start");
+        Debug.Log("Start webpoller");
         if (SceneManager.GetActiveScene().name == "_startup")
         {
             DontDestroyOnLoad(this);

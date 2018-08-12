@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 /**
  * This class allows a Unity program to continually check for messages from a
@@ -69,6 +70,18 @@ public class SerialController : MonoBehaviour
                                              maxUnreadMessages);
         thread = new Thread(new ThreadStart(serialThread.RunForever));
         thread.Start();
+    }
+
+
+    private void Start()
+    {
+
+        Debug.Log("Start serialmanager");
+        if (SceneManager.GetActiveScene().name == "_startup")
+        {
+            DontDestroyOnLoad(this);
+        }
+
     }
 
     // ------------------------------------------------------------------------

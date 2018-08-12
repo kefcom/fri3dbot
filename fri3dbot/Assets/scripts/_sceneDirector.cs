@@ -25,36 +25,331 @@ public class _sceneDirector : MonoBehaviour {
     {
         int transitionNumber = UnityEngine.Random.Range(0, 7);
         float waitingTime = UnityEngine.Random.Range(2f, 5f);
+        LedData ledData = new LedData();
         switch (transitionNumber)
         {
             case 0:
                 SceneManager.LoadScene("_transition_static");
+
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 8,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 8,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 8,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
                 break;
             case 1:
                 SceneManager.LoadScene("_transition_testbeeld1");
+
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 25,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 25,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 25,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+
                 break;
             case 2:
                 SceneManager.LoadScene("_transition_testbeeld2");
+
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 45,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFFFFFF"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 45,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFFFFFF"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 45,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFFFFFF"
+                    }
+                };
                 break;
             case 3:
                 SceneManager.LoadScene("_transition_xpScreensaver");
+
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 23,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x00FF00"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 23,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x00FF00"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 23,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x00FF00"
+                    }
+                };
                 break;
             case 4:
                 SceneManager.LoadScene("_transition_blocks");
                 waitingTime = 8f;
+
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 2,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFF0000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 2,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFF0000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 2,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFF0000"
+                    }
+                };
                 break;
             case 5:
                 SceneManager.LoadScene("_transition_Fri3dlogo");
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 1,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFF0000",
+                        speed = 1000
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 1,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFF0000",
+                        speed = 1000
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 1,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0xFF0000",
+                        speed = 1000
+                    }
+                };
                 break;
             case 6:
                 SceneManager.LoadScene("_transition_bsod");
+
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 0,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x00FF00",
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 0,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x00FF00",
+
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 0,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x00FF00",
+                    }
+                };
                 break;
 
             default:
                 SceneManager.LoadScene("_transition_static");
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 0,
+                        animation = 8,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 1,
+                        animation = 8,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
+                GameObject.Find("serialManager").GetComponent<SerialManager>().SendLedData(ledData);
+                ledData = new LedData
+                {
+                    action = "controlLedStrip",
+                    actionData =
+                    {
+                        stripNum = 2,
+                        animation = 8,
+                        brightness = GameObject.Find("serialManager").GetComponent<SerialManager>().ledBrightness,
+                        color = "0x000000"
+                    }
+                };
                 break;
         }
-        
+
+
+
         Invoke("switchToFace", waitingTime);
     }
 	
