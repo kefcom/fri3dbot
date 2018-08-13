@@ -17,6 +17,9 @@ public class foxkehScript : MonoBehaviour {
             moodID = 0;
             newMoodID = 0;
             Invoke("determineMood", 1f);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 37, "0xFF0030", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF3000", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 0, "0xaFF3000", 500);
         }
         else
         {
@@ -90,26 +93,44 @@ public class foxkehScript : MonoBehaviour {
                 case 0:
                     //Looking
                     SceneManager.LoadScene("foxkeh-Looking");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 55, "0xFF0030", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF3000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 1, "0xaFF3000", 500);
                     break;
                 case 1:
                     //idle
                     SceneManager.LoadScene("foxkeh-Idle");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0xFF0030", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF3000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xaFF3000", 500);
                     break;
                 case 2:
                     //fri3d
                     SceneManager.LoadScene("foxkeh-Fri3d");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 17, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF3000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 49, "0xaFF3000", 500);
                     break;
                 case 3:
                     //tilt
                     SceneManager.LoadScene("foxkeh-Tilt");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 13, "0xFF0030", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF3000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 49, "0xaFF3000", 500);
                     break;
                 case 4:
                     //badge
                     SceneManager.LoadScene("foxkeh-Badge");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0x0000FF", 500);
                     break;
                 case 5:
                     //coon
                     SceneManager.LoadScene("foxkeh-Coon");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 3, "0xFF0030", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 3, "0x0000FF", 500);
                     break;
                 case 6:
                     //foxkeh party (only to be displayed after 22:00 until 6)
@@ -127,11 +148,17 @@ public class foxkehScript : MonoBehaviour {
                     {
                         // it's between 22:00 and 6:00, so Party on!
                         SceneManager.LoadScene("foxkeh-party");
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 28, "0xFF0030", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 28, "0xFF0000", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 28, "0x0000FF", 500);
                     }
                     break;
                 default:
                     //idle
                     SceneManager.LoadScene("foxkeh-Looking");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 55, "0xFF0030", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF3000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 1, "0xaFF3000", 500);
                     break;
             }
             Debug.Log("new mood in: " + moodTime.ToString() + " seconds");

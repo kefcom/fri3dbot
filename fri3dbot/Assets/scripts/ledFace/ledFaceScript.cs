@@ -87,19 +87,32 @@ public class ledFaceScript : MonoBehaviour {
                 case 0:
                     //happy (random)
                     SceneManager.LoadScene("ledFace_Happy00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 15, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 15, "0xaFF0000", 500);
+                break;
                 case 1:
                     //angry (random)
                     SceneManager.LoadScene("ledFace_Angry00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0xaFF0000", 500);
+                break;
                 case 2:
                     //Error (sequence)
                     SceneManager.LoadScene("ledFace_Error00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 10, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 10, "0xaFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 10, "0xaFF0000", 500);
+                break;
                 case 3:
                     //Looking (random)
                     SceneManager.LoadScene("ledFace_Looking00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 0, "0x000000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 55, "0x0FF000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 55, "0xFF0000", 500);
+                break;
                 case 4:
                     //Sleeping (random)
                     //only trigger between 19:00 and 7:00
@@ -118,14 +131,21 @@ public class ledFaceScript : MonoBehaviour {
                         // it's between 19:00 and 7:00, so go right ahead sleepy...
                         moodTime = UnityEngine.Random.Range(60, 300); // sleep for 1 to 5 minutes
                         SceneManager.LoadScene("ledFace_Sleeping00");
-                    }
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 18, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xFF0000", 500);
+
+                }
                     break;
                 case 5:
                     //Special (blow kiss)
                     //override new mood time
                     moodTime = 2;
                     SceneManager.LoadScene("ledFace_Love00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xFF0000", 500);
+                break;
                 case 6:
                     //Party-drink (fixed sequence)
                     //only trigger between 22:00 and 4:00
@@ -144,48 +164,75 @@ public class ledFaceScript : MonoBehaviour {
                         // it's between 22:00 and 4:00, so Party on!
                         moodTime = 10; //fixed animation time
                         SceneManager.LoadScene("ledFace_Party00");
-                    }
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 25, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 25, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 25, "0xFF0000", 500);
+                }
                     break;
                 case 7:
                     //Special2 (love fri3d)
                     //override new mood time
                     moodTime = 5;
                     SceneManager.LoadScene("ledFace_Love01");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 3, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 3, "0xFF0000", 500);
+                break;
                 case 8:
                     //Game (sequence once)
                     moodTime = 15;
                     SceneManager.LoadScene("ledFace_Game00");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 7, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 7, "0xFF0000", 500);
                     break;
                 case 9:
                     //Robot (sequence)
                     SceneManager.LoadScene("ledFace_Robot00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 1, "0xFF0000", 1000);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xFF0000", 500);
+                break;
                 case 10:
                     //Leughing (random)
                     SceneManager.LoadScene("ledFace_Laughing00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 9, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 9, "0xFF0000", 500);
+                break;
                 case 11:
                     //Crash (single frame with unity physx)
                     moodTime = 15;
                     SceneManager.LoadScene("ledFace_Crash00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 18, "0x00FF00", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0x0000FF", 500);
+                break;
                 case 12:
                     //Special (heart eyes)
                     //override new mood time
                     moodTime = 2;
                     SceneManager.LoadScene("ledFace_Love02");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 10, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xFF0000", 500);
+                break;
                 case 13:
                     //Game2 (sequence)
                     SceneManager.LoadScene("ledFace_Game200");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 7, "0x0000FF", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 7, "0xFF0000", 500);
+                break;
 
 
                 default:
                     // Happy
                     SceneManager.LoadScene("ledFace_Happy00");
-                    break;
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 15, "0xFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 15, "0xaFF0000", 500);
+                break;
             }
 
             //apply mood time

@@ -19,6 +19,9 @@ public class roboFaceScript : MonoBehaviour
             moodID = 0;
             newMoodID = 0;
             Invoke("determineMood", 1f);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xa0000FF", 500);
         }
         else
         {
@@ -91,18 +94,30 @@ public class roboFaceScript : MonoBehaviour
                 case 0:
                     //loading
                     SceneManager.LoadScene("roboFace-loading");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 18, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 18, "0xa00FF00", 500);
                     break;
                 case 1:
                     //looking
                     SceneManager.LoadScene("roboFace-looking");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 49, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 49, "0xa00FF00", 500);
                     break;
                 case 2:
                     //looking
                     SceneManager.LoadScene("roboFace-dj");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 16, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 16, "0xa00FF00", 500);
                     break;
                 case 3:
                     //fri3d
                     SceneManager.LoadScene("roboFace-fri3d");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 25, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 1, "0xa0000FF", 500);
                     break;
                 case 4:
                     //roboface party (only to be displayed after 22:00 until 6)
@@ -120,20 +135,32 @@ public class roboFaceScript : MonoBehaviour
                     {
                         // it's between 22:00 and 6:00, so Party on!
                         SceneManager.LoadScene("roboFace-party");
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 10, "0xFF0000", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 10, "0xaFF0000", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 10, "0xaFF0000", 500);
                     }
                     break;
                 case 5:
                     //psyche
                     moodTime = 10; // simple animation, not too long
                     SceneManager.LoadScene("roboFace-psyche");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 10, "0xaFF0000", 500);
                     break;
                 case 6:
                     //talking
                     SceneManager.LoadScene("roboFace-talking");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 45, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 45, "0xaFF0000", 500);
                     break;
                 default:
                     //init
                     SceneManager.LoadScene("roboFace-init");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xa0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xa0000FF", 500);
                     break;
             }
             Debug.Log("changed scene for " + moodTime.ToString() + " seconds");

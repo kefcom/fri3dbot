@@ -17,6 +17,9 @@ public class gearheadScript : MonoBehaviour {
             moodID = 0;
             newMoodID = 0;
             Invoke("determineMood", 1f);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 37, "0xFF0000", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 0, "0xaFF0000", 500);
         }
         else
         {
@@ -92,22 +95,37 @@ public class gearheadScript : MonoBehaviour {
                 case 0:
                     //idle
                     SceneManager.LoadScene("gearHead_idle");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0xaFF0000", 500);
                     break;
                 case 1:
                     //idle2
                     SceneManager.LoadScene("gearHead_idle2");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0xa0000FF", 500);
                     break;
                 case 2:
                     //happy (more like derpy)
                     SceneManager.LoadScene("gearHead_happy");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 5, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 5, "0xaFF0000", 500);
                     break;
                 case 3:
                     //stuck
                     SceneManager.LoadScene("gearHead_gearStuck");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 14, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 14, "0xaFF0000", 500);
                     break;
                 case 4:
                     //fri3d
                     SceneManager.LoadScene("gearHead_fri3d");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 12, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 12, "0xaFF0000", 500);
                     break;
                 case 5:
                     //gearhead party (only to be displayed after 22:00 until 6)
@@ -125,15 +143,24 @@ public class gearheadScript : MonoBehaviour {
                     {
                         // it's between 22:00 and 6:00, so Party on!
                         SceneManager.LoadScene("gearhead-party");
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 10, "0xFF0000", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 10, "0xaFF0000", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 10, "0xaFF0000", 500);
                     }
                     break;
                 case 6:
                     //high
                     SceneManager.LoadScene("gearHead_high");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 46, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0xaFF0000", 500);
                     break;
                 default:
                     // idle
                     SceneManager.LoadScene("gearHead_idle");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0xFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0xaFF0000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0xaFF0000", 500);
                     break;
             }
 

@@ -20,6 +20,9 @@ public class SerialManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "_startup")
         {
             DontDestroyOnLoad(this);
+            sendDataToLogo(64, 2, "0xFFFFFF", 0);
+            sendDataToBody(64, 2, "0XFFFFFF", 0);
+            sendDataToEars(64, 2, "0xFFFFFF", 0);
         }
         
     }
@@ -130,39 +133,84 @@ public class SerialManager : MonoBehaviour
         _serialController.SendSerialMessage(message);
     }
 
-    void SendTestData()
+    public void sendDataToLogo(int Brightness, int Animation, string Color, int Speed)
     {
-        var ports = SerialPort.GetPortNames();
-        //if (ports.Length != 1)
-        //{
-        //    return;
-        //    //throw new Exception("No ports found, or too many ports to choose from");
-        //}
-        
-        //var port = ports.First();
-        var port = "com8";
-        _serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
-        _serialController.portName = port;
-        Debug.Log("ledBrightness: " + ledBrightness.ToString());
-        var ledData = new LedData
+        int newBrightness = 0;
+        if (Brightness > 0)
+        {
+            newBrightness = Brightness;
+        }
+        else
+        {
+            newBrightness = ledBrightness;
+        }
+        LedData ledData = new LedData();
+        ledData = new LedData
         {
             action = "controlLedStrip",
             actionData =
-            {
-                stripNum = 0,
-                animation = 15,
-                brightness = ledBrightness,
-                color = "44fd15"
-            }
+                    {
+                        stripNum = 0,
+                        animation = Animation,
+                        brightness = newBrightness,
+                        color = Color,
+                        speed = Speed
+                    }
         };
-
-        Debug.Log("brightness: " + ledData.actionData.brightness.ToString());
-        var message = JsonConvert.SerializeObject(ledData);
-        message += Environment.NewLine;
-        _serialController.SendSerialMessage(message);
+        SendLedData(ledData);
     }
-
-
+    public void sendDataToBody(int Brightness, int Animation, string Color, int Speed)
+    {
+        int newBrightness = 0;
+        if (Brightness > 0)
+        {
+            newBrightness = Brightness;
+        }
+        else
+        {
+            newBrightness = ledBrightness;
+        }
+        LedData ledData = new LedData();
+        ledData = new LedData
+        {
+            action = "controlLedStrip",
+            actionData =
+                    {
+                        stripNum = 1,
+                        animation = Animation,
+                        brightness = newBrightness,
+                        color = Color,
+                        speed = Speed
+                    }
+        };
+        SendLedData(ledData);
+    }
+    public void sendDataToEars(int Brightness, int Animation, string Color, int Speed)
+    {
+        int newBrightness = 0;
+        if (Brightness > 0)
+        {
+            newBrightness = Brightness;
+        }
+        else
+        {
+            newBrightness = ledBrightness;
+        }
+        LedData ledData = new LedData();
+        ledData = new LedData
+        {
+            action = "controlLedStrip",
+            actionData =
+                    {
+                        stripNum = 2,
+                        animation = Animation,
+                        brightness = newBrightness,
+                        color = Color,
+                        speed = Speed
+                    }
+        };
+        SendLedData(ledData);
+    }
 }
 public class LedData
 {
