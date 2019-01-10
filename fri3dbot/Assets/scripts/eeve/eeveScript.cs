@@ -6,6 +6,7 @@ using System;
 public class eeveScript : MonoBehaviour {
     private int moodID;
     private int newMoodID;
+    public int maxEmotions = 9;
 
     void Start()
     {
@@ -16,6 +17,9 @@ public class eeveScript : MonoBehaviour {
             moodID = 0;
             newMoodID = 0;
             Invoke("determineMood", 1f);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 55, "0x00FF00", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x00FF00", 500);
+            GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 55, "0x00FF00", 500);
         }
         else
         {
@@ -41,7 +45,7 @@ public class eeveScript : MonoBehaviour {
             }
             else
             {
-                moodID = 6; // change to max emotions
+                moodID = maxEmotions;
             }
             newMoodID = moodID;
             changeMood();
@@ -49,7 +53,7 @@ public class eeveScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.RightArrow) == true)
         {
             CancelInvoke();
-            if (moodID < 6) // change to max emotions
+            if (moodID < maxEmotions)
             {
                 moodID++;
             }
@@ -66,7 +70,11 @@ public class eeveScript : MonoBehaviour {
     void determineMood()
     {
 
-        newMoodID = UnityEngine.Random.Range(0, 7); // choose next mood between x (inclusive) and x (exclusive)
+        newMoodID = UnityEngine.Random.Range(0, maxEmotions); // choose next mood between x (inclusive) and x (exclusive)
+        if (newMoodID == moodID)
+        {
+            determineMood();
+        }
         changeMood();
     }
 
@@ -90,38 +98,94 @@ public class eeveScript : MonoBehaviour {
                 case 0:
                     //idle
                     SceneManager.LoadScene("eeve-idle");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0x00FF00", 500);
                     break;
                 case 1:
                     //Happy
                     SceneManager.LoadScene("eeve-happy");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 24, "0x00FF00", 1);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 24, "0x00FF00", 1);
                     break;
                 case 2:
                     //fri3d
                     SceneManager.LoadScene("eeve-fri3d");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x0FF000", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0x0000FF", 500);
                     break;
                 case 3:
                     //idle2
                     SceneManager.LoadScene("eeve-idle2");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0x0000FF", 500);
                     break;
                 case 4:
                     //glitch
+                    moodTime = UnityEngine.Random.Range(2, 6);
+                    //beter not to show errors too long, they so sad :(
                     SceneManager.LoadScene("eeve-glitch");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 21, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0x0000FF", 500);
                     break;
                 case 5:
                     //idle3
                     SceneManager.LoadScene("eeve-idle3");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0x0000FF", 500);
                     break;
                 case 6:
                     //error
+                    moodTime = UnityEngine.Random.Range(2, 6);
+                    //beter not to show errors too long, they so sad :(
                     SceneManager.LoadScene("eeve-error");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 21, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 21, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 21, "0x0000FF", 500);
+                    break;
+                case 7:
+                    //eeve party (only to be displayed after 22:00 until 6)
+                    TimeSpan start = new TimeSpan(06, 0, 0);
+                    TimeSpan end = new TimeSpan(22, 0, 0);
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+
+                    if ((now > start) && (now < end))
+                    {
+                        // can't trigger now, choose another mood
+                        determineMood();
+                        return; //exit the routine instead of re-calculating moodtimes
+                    }
+                    else
+                    {
+                        // it's between 22:00 and 6:00, so Party on!
+                        SceneManager.LoadScene("eeve-party");
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 28, "0x0000FF", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 28, "0xFF0000", 500);
+                        GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 28, "0x0000FF", 500);
+                    }
+                    break;
+                case 8:
+                    //amazed
+                    SceneManager.LoadScene("eeve-amazed");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 43, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x0000FF", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 43, "0x0000FF", 500);
                     break;
 
                 default:
                     //idle
                     SceneManager.LoadScene("eeve-idle");
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToLogo(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToBody(0, 2, "0x00FF00", 500);
+                    GameObject.Find("serialManager").GetComponent<SerialManager>().sendDataToEars(0, 2, "0x00FF00", 500);
                     break;
             }
-
+            Debug.Log("new mood in: " + moodTime.ToString() + " seconds");
             //apply mood time
             Invoke("determineMood", moodTime);
         }
